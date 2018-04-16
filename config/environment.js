@@ -2,6 +2,14 @@
 
 module.exports = function(environment) {
   let ENV = {
+    firebase: {
+      apiKey: "AIzaSyBXx66o7qz6PDCPqmus8gtI_eJFPt_AM-g",
+      authDomain: "agroplus-unalmed.firebaseapp.com",
+      databaseURL: "https://agroplus-unalmed.firebaseio.com",
+      projectId: "agroplus-unalmed",
+      storageBucket: "agroplus-unalmed.appspot.com",
+      messagingSenderId: "461701079889"
+    },
     modulePrefix: 'agroplus',
     environment,
     rootURL: '/',
