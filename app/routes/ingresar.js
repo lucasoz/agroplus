@@ -1,14 +1,17 @@
 import Route from '@ember/routing/route';
+import {inject} from '@ember/service';
 
 export default Route.extend({
-  firebaseApp: Ember.inject.service(),
-  model(){
-    var user = this.get('firebaseApp').auth().currentUser;
+  firebaseApp: inject(),
+  beforeModel(){
+    this.get('firebaseApp').auth().onAuthStateChanged((user)=>{
       if (user) {
+        console.log(user.email);
         this.transitionTo('index');
       } else {
-        // No user is signed in.
-        console.log("mal");
+        this.transitionTo('ingresar');
       }
+    });
+
   }
 });

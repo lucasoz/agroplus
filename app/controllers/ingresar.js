@@ -1,33 +1,27 @@
 import Controller from '@ember/controller';
+import {inject} from '@ember/service';
 
 export default Controller.extend({
-  firebaseAp: Ember.inject.service(),
+  firebaseApp: inject(),
   actions:{
     IniciarSesion(){
       var nombreUsuario = this.get('nombreUsuario');
       var contrasena = this.get('contrasena');
-      //console.log('bien');
-      /*
-      this.get('session').open('firebase', {
-        provider: 'password',
-        email: nombreUsuario,
-        password: contrasena
-      });
-      console.log(this.get('session'));
-      console.log(this.get('session').isAuthenticated);
-      */
-      this.get('firebaseApp').auth().signInWithEmailAndPassword(nombreUsuario, contrasena).catch(function(error) {
+      var hola = this;
+      this.get('firebaseApp').auth().signInWithEmailAndPassword(nombreUsuario, contrasena).then(function(){
+          hola.transitionToRoute('index');
+      }).catch((error) =>{
         // Handle Errors here.
         var errorCode = error.code;
         var errorMessage = error.message;
-        // ...
-      });
-      this.get('firebaseApp').auth().onAuthStateChanged(function(user) {
-        if (user) {
-          console.log("bien");
-        } else {
-          // No user is signed in.
-          console.log("mal");
+        if(errorCode == 'auth/invalid-email'){
+          alert('Correo no valido');
+        }else if (errorCode == 'auth/user-not-found') {
+          alert('Correo no existe');
+        }else if (errorCode == 'auth/wrong-password') {
+          alert('Contraseña no es correcta');
+        }else {
+          console.log(errorMessage);
         }
       });
     },
