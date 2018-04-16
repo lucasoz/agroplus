@@ -10,6 +10,9 @@ module.exports = function(environment) {
       storageBucket: "agroplus-unalmed.appspot.com",
       messagingSenderId: "461701079889"
     },
+    torii: {
+      sessionServiceName: 'session'
+    },
     modulePrefix: 'agroplus',
     environment,
     rootURL: '/',
