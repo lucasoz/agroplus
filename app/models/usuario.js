@@ -7,6 +7,7 @@ export default DS.Model.extend({
   municipio: DS.attr('string'),
   departamento: DS.attr('string'),
   telefono: DS.attr('number'),
+  correo: DS.atrr('string'),
   //Relaciones
   propiedades: DS.hasMany('propiedad', { async: true, inverse: null }),
   contactos: DS.hasMany('contacto', { async: true, inverse: null }),

@@ -7,9 +7,9 @@ export default Controller.extend({
     IniciarSesion(){
       var nombreUsuario = this.get('nombreUsuario');
       var contrasena = this.get('contrasena');
-      var hola = this;
-      this.get('firebaseApp').auth().signInWithEmailAndPassword(nombreUsuario, contrasena).then(function(){
-          hola.transitionToRoute('index');
+      var self = this;
+      this.get('firebaseApp').auth().signInWithEmailAndPassword(nombreUsuario, contrasena).then(() => {
+          this.transitionToRoute('index');
       }).catch((error) =>{
         // Handle Errors here.
         var errorCode = error.code;
@@ -25,8 +25,5 @@ export default Controller.extend({
         }
       });
     },
-    CerrarSesion(){
-      this.get('session').close();
-    }
   }
 });

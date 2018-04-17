@@ -1,0 +1,39 @@
+<div class="">
+  <div class="input-group">
+    <span class="input-group-addon" id="basic-addon1">Nombre</span>
+    {{input type="text" value=nombre class="form-control" placeholder="Nombre" aria-describedby="basic-addon1"}}
+  </div>
+
+  <div class="input-group">
+    <span class="input-group-addon" id="basic-addon1">Apellido</span>
+    {{input type="text" value=apellido class="form-control" placeholder="Apellido" aria-describedby="basic-addon1"}}
+  </div>
+
+  <div class="input-group">
+    <span class="input-group-addon" id="basic-addon1">Municipio</span>
+    {{input type="text" value=municipio class="form-control" placeholder="Municipio" aria-describedby="basic-addon1"}}
+  </div>
+
+  <div class="input-group">
+    <span class="input-group-addon" id="basic-addon1">Departamento</span>
+    {{input type="text" value=departamento class="form-control" placeholder="Departamento" aria-describedby="basic-addon1"}}
+  </div>
+
+  <div class="input-group">
+    <span class="input-group-addon" id="basic-addon1">Telefono</span>
+    {{input type="text" value=telefono class="form-control" placeholder="Telefono" aria-describedby="basic-addon1"}}
+  </div>
+
+  <div class="input-group">
+    <span class="input-group-addon" id="basic-addon1">Correo</span>
+    {{input type="text" value=correo class="form-control" placeholder="Correo" aria-describedby="basic-addon1"}}
+  </div>
+
+  <div class="input-group">
+    <span class="input-group-addon" id="basic-addon1">Contraseña</span>
+    {{input type="text" value=contrasena class="form-control" placeholder="Contraseña" aria-describedby="basic-addon1"}}
+  </div>
+
+  <button type="button" {{action 'AgregarUsuario'}}>Agregar usuario</button>
+</div>
+{{outlet}}
