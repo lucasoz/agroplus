@@ -1,15 +1,24 @@
-<div>
+<div class='page-header form-signin '>
+    <h1>Ingreso</h1>
+</div>
+<div class="form-signin">
   <div class="input-group">
     <span class="input-group-addon" id="basic-addon1">@</span>
-    {{input type="text" value=nombreUsuario class="form-control" placeholder="Nombre usuario" aria-describedby="basic-addon1"}}
+    {{input type="text" value=nombreUsuario class="form-control" id="inputEmail" placeholder="Nombre usuario" aria-describedby="basic-addon1"}}
   </div>
-
+  <br>
   <div class="input-group">
     <span class="input-group-addon" id="basic-addon1">***</span>
-    {{input type="password" value=contrasena class="form-control" placeholder="Contraseña" aria-describedby="basic-addon1"}}
+    {{input type="password" value=contrasena class="form-control" id="inputPassword" placeholder="Contraseña" aria-describedby="basic-addon1"}}
   </div>
-
-  <button type="button" {{action 'IniciarSesion'}}>Iniciar sesión</button>
+<br>
+  <button class='btn btn-lg btn-primary btn-block' {{action 'IniciarSesion'}}>
+      {{fa-icon 'sign-in'}} Iniciar Sesión
+  </button>
+<br>
+</div >
+<div class="form-signin">
+  {{#link-to 'registrar-usuario' class='btn btn-lg btn-success btn-block'}}Agregar usuario{{/link-to}}
 </div>
-{{#link-to 'registrar-usuario'}}Agregar usuario{{/link-to}}
+
 {{outlet}}
