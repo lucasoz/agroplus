@@ -15,7 +15,7 @@ export default Controller.extend({
         console.log('antes');
 
         var nuevoUsuario = this.store.createRecord('usuario',{
-          //id: uid,
+          id: uid,
           nombre: nombre,
           apellido: apellido,
           municipio: municipio,
