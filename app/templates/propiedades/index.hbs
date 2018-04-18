@@ -1,0 +1,20 @@
+{{#link-to 'propiedades.agregar-propiedad' class='btn btn-success'}} Agregar propiedad {{/link-to}}
+<h1>Propiedades</h1>
+<table class="table">
+  <thead>
+    <tr>
+    <th>Nombre</th>
+    <th>Options</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each model as |propiedad|}}
+      <tr>
+      <td>{{#link-to 'propiedades.propiedad' propiedad.id}} {{propiedad.name}} {{/link-to}}</td>
+      <td><button type="button" name="button"{{action 'delete' propiedad.id}}>Eliminar</button></td>
+      <td>{{#link-to 'propiedades.propiedad.editar-propiedad' propiedad.id}}Editar{{/link-to}}</td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>
+{{outlet}}

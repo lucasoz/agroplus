@@ -1,1 +1,18 @@
+<div class='page-header form-signin '>
+    <h1>Ingresar lote</h1>
+</div>
+<h3 class="form-signin">{{mensaje}}</h3>
+<div class="form-signin">
+  <div class="input-group">
+    <span class="input-group-addon" id="basic-addon1">Área(m^2)</span>
+    {{input type="text" value=area class="form-control" placeholder="23" aria-describedby="basic-addon1"}}
+  </div>
+<br>
+  <div class="input-group">
+    <span class="input-group-addon" id="basic-addon1">Descripción</span>
+    {{textarea value=descripcion class='form-control' placeholder='Lote destinado al almacenamieto del producto' aria-describedby="basic-addon1"}}
+  </div>
+<br>
+  <button type="button"  class='btn btn-lg btn-success btn-block' {{action 'agregarLote'}}>Agregar lote</button>
+</div>
 {{outlet}}
