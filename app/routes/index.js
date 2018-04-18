@@ -14,9 +14,9 @@ export default Route.extend({
     CerrarSesion(){
       this.get('firebaseApp').auth().signOut().then(function() {
         this.replaceWith('ingresar');
-      }).catch(function(error) {
-
       });
+      // .catch(function(error) {
+      // });
     }
   }
 });
