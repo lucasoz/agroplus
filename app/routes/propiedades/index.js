@@ -6,9 +6,9 @@ export default Route.extend({
   model(){
     var user = this.get('firebaseApp').auth().currentUser;
     if (!user) {
-      this.transitionTo('index');
+      this.transitionTo('ingresar');
     }else{
       return this.modelFor('propiedades');
-    } 
+    }
   },
 });
