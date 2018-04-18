@@ -6,11 +6,8 @@ export default Route.extend({
   beforeModel(){
     this.get('firebaseApp').auth().onAuthStateChanged((user)=>{
       if (user) {
-        console.log(user.email);
-        console.log(user.uid);
         this.transitionTo('index');
       }
     });
-
   }
 });
