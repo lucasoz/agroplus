@@ -4,7 +4,7 @@ import {inject} from '@ember/service';
 export default Controller.extend({
   firebaseApp: inject(),
   actions:{
-    AgregarUsuario(){
+    agregarUsuario(){
       this.get('firebaseApp').auth().createUserWithEmailAndPassword(this.correo, this.contrasena).then(({uid})=>{
         var nombre = this.nombre;
         var apellido = this.apellido;

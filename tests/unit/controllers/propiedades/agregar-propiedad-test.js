@@ -1,6 +1,6 @@
 import { moduleFor, test } from 'ember-qunit';
 
-moduleFor('controller:propiedad/agregar-propiedad', 'Unit | Controller | propiedad/agregar propiedad', {
+moduleFor('controller:propiedades/agregar-propiedad', 'Unit | Controller | propiedades/agregar propiedad', {
   // Specify the other units that are required for this test.
   // needs: ['controller:foo']
 });

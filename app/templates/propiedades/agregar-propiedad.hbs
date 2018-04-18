@@ -1,15 +1,38 @@
-<div class="input-group">
-  <span class="input-group-addon" id="basic-addon1">Nombre de la propiedad</span>
-  {{input type="text" value=nombrePropiedad class="form-control" placeholder="Nombre de la propiedad" aria-describedby="basic-addon1"}}
+<div class='page-header form-signin '>
+    <h1>Agregar propiedad</h1>
+</div>
+<div class="form-signin">
+  <div class="input-group">
+    <span class="input-group-addon" id="basic-addon1">Nombre de la propiedad</span>
+    {{input type="text" value=nombrePropiedad class="form-control" placeholder="La María" aria-describedby="basic-addon1"}}
+  </div>
+  <br>
+  <div class="input-group">
+    <span class="input-group-addon" id="basic-addon1">Latitud</span>
+    {{input type="number" value=latitud class="form-control" placeholder="6.299336" aria-describedby="basic-addon1"}}
+  </div>
+  <br>
+  <div class="input-group">
+    <span class="input-group-addon" id="basic-addon1">Longitud</span>
+    {{input type="number" value=longitud class="form-control" placeholder="-75.582342" aria-describedby="basic-addon1"}}
+  </div>
+  <br>
+  <div class="input-group">
+    <span class="input-group-addon" id="basic-addon1">Departamento</span>
+    {{input type="text" value=departamento class="form-control" placeholder="Antioquia" aria-describedby="basic-addon1"}}
+  </div>
+  <br>
+  <div class="input-group">
+    <span class="input-group-addon" id="basic-addon1">Municipio</span>
+    {{input type="text" value=municipio class="form-control" placeholder="Puerto Nare" aria-describedby="basic-addon1"}}
+  </div>
+  <br>
+  <div class="input-group">
+    <span class="input-group-addon" id="basic-addon1">Vereda</span>
+    {{input type="text" value=vereda class="form-control" placeholder="La unión" aria-describedby="basic-addon1"}}
+  </div>
+  <br>
+  <button type="button"  class='btn btn-lg btn-success btn-block' {{action 'agregarPropiedad'}}>Agregar propiedad</button>
 </div>
 
-<div class="input-group">
-  <span class="input-group-addon" id="basic-addon1">Latitud</span>
-  {{input type="number" value=latitud class="form-control" placeholder="Latitud" aria-describedby="basic-addon1"}}
-</div>
-
-<div class="input-group">
-  <span class="input-group-addon" id="basic-addon1">Apellido</span>
-  {{input type="text" value=apellido class="form-control" placeholder="Apellido" aria-describedby="basic-addon1"}}
-</div>
 {{outlet}}
