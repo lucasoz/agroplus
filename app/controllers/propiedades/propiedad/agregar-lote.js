@@ -10,7 +10,7 @@ export default Controller.extend({
         this.set('mensaje', 'Por favor ingresa la descripcion');
       } else {
         var propiedad = this.model;
-        nuevoLote = this.store.createRecord('lote', {
+        var nuevoLote = this.store.createRecord('lote', {
           area: this.area,
           descripcion: this.descripcion,
         });

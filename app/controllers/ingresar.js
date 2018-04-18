@@ -7,13 +7,11 @@ export default Controller.extend({
     IniciarSesion(){
       var nombreUsuario = this.get('nombreUsuario');
       var contrasena = this.get('contrasena');
-      var self = this;
       this.get('firebaseApp').auth().signInWithEmailAndPassword(nombreUsuario, contrasena).then(() => {
           this.transitionToRoute('index');
       }).catch((error) =>{
         // Handle Errors here.
         var errorCode = error.code;
-        var errorMessage = error.message;
         if(errorCode == 'auth/invalid-email'){
           alert('Correo no valido');
         }else if (errorCode == 'auth/user-not-found') {
@@ -21,7 +19,7 @@ export default Controller.extend({
         }else if (errorCode == 'auth/wrong-password') {
           alert('Contraseña no es correcta');
         }else {
-          console.log(errorMessage);
+          // console.log(errorMessage);
         }
       });
     },

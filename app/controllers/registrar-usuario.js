@@ -12,7 +12,7 @@ export default Controller.extend({
         var departamento = this.departamento;
         var telefono = this.telefono;
         var correo = this.correo;
-        console.log('antes');
+        // console.log('antes');
 
         var nuevoUsuario = this.store.createRecord('usuario',{
           id: uid,
@@ -24,14 +24,14 @@ export default Controller.extend({
           correo: correo,
         });
 
-        console.log('hi');
+        // console.log('hi');
         nuevoUsuario.save();
-        console.log('despues');
+        // console.log('despues');
         this.transitionToRoute('index');
       }).catch((error) =>{
         // Handle Errors here.
         var errorCode = error.code;
-        var errorMessage = error.message;
+        // var errorMessage = error.message;
         if(errorCode == 'auth/email-already-in-use'){
           alert('Correo ya existe');
         }else if (errorCode == 'auth/invalid-email') {
