@@ -1,6 +1,8 @@
 import Controller from '@ember/controller';
+import {inject} from '@ember/service';
 
 export default Controller.extend({
+  firebaseApp: inject(),
   actions:{
     agregarPropiedad(){
       var nombrePropiedad = this.nombrePropiedad;
@@ -14,6 +16,28 @@ export default Controller.extend({
       if (nombrePropiedad == '' || nombrePropiedad == undefined) {
 
       }
+
+      ///Guardar la propiedad
+      var usuarioAutenticado = this.get('firebaseApp').auth().currentUser;
+      //var usuario = this.get('store').findRecord('usuario', 'd0h9BzuHWDTOyMjn8LZGMJMTr8l1');
+      var usuario = this.model;
+      //console.log(usuarioAutenticado.uid);
+      console.log(usuario);
+      console.log(usuario.apellido);
+      var nuevaPropiedad = this.store.createRecord('propiedad',{
+        nombre: nombrePropiedad,
+        longitud: longitud,
+        latitud: latitud,
+        departamento: departamento,
+        municipio: municipio,
+        vereda: vereda,
+        usuario: usuario
+      });
+      console.log(nuevaPropiedad);
+      usuario.get('propiedades').addObject(nuevaPropiedad);
+      nuevaPropiedad.save().then(function(){
+        return usuario.save();
+      });
     }
   }
 });
