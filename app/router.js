@@ -11,11 +11,11 @@ Router.map(function() {
   this.route('registrar-usuario');
   this.route('propiedades', function() {
     this.route('agregar-propiedad');
-    this.route('propiedad', function() {
+    this.route('propiedad', { path: ':id'}, function() {
       this.route('editar-propiedad');
       this.route('agregar-lote');
 
-      this.route('lote', function() {
+      this.route('lote', { path: ':id'}, function() {
         this.route('editar-lote');
       });
       this.route('lotes');
