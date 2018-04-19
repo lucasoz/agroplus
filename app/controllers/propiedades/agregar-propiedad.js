@@ -13,17 +13,17 @@ export default Controller.extend({
       var vereda = this.vereda;
 
       ///verificar que los campos no esten vacios
-      // if (nombrePropiedad == '' || nombrePropiedad == undefined) {
-      //
-      // }
+      if (nombrePropiedad == '' || nombrePropiedad == undefined) {
+
+      }
 
       ///Guardar la propiedad
-      // var usuarioAutenticado = this.get('firebaseApp').auth().currentUser;
-      //var usuario = this.get('store').findRecord('usuario', 'd0h9BzuHWDTOyMjn8LZGMJMTr8l1');
+      var usuarioAutenticado = this.get('firebaseApp').auth().currentUser;
+      //var usuario = this.get('store').findRecord('usuario', usuarioAutenticado.uid);
       var usuario = this.model;
       //console.log(usuarioAutenticado.uid);
       // console.log(usuario);
-      // console.log(usuario.apellido);
+      //console.log(usuario);
       var nuevaPropiedad = this.store.createRecord('propiedad',{
         nombre: nombrePropiedad,
         longitud: longitud,
@@ -33,7 +33,7 @@ export default Controller.extend({
         vereda: vereda,
         usuario: usuario
       });
-      // console.log(nuevaPropiedad);
+      //console.log(nuevaPropiedad.nombre);
       usuario.get('propiedades').addObject(nuevaPropiedad);
       nuevaPropiedad.save().then(function(){
         return usuario.save();

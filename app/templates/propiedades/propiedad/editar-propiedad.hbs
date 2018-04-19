@@ -1,1 +1,18 @@
+<div class='page-header form-signin '>
+    <h1>Editar propiedad</h1>
+</div>
+<div class="form-signin">
+  <div class="input-group">
+    <span class="input-group-addon" id="basic-addon1">Nombre de la propiedad</span>
+    {{input type="text" value=nombrePropiedad class="form-control" placeholder="La María" aria-describedby="basic-addon1"}}
+  </div>
+  <br>
+  <span>Latitud: {{model.latitud}}</span><br>
+  <span>Longitud: {{model.longitud}}</span><br>
+  <span>Departamento: {{model.departamento}}</span><br>
+  <span>Municipio: {{model.municipio}}</span><br>
+  <span>Vereda: {{model.vereda}}</span><br>
+  <br>
+  <button type="button"  class='btn btn-lg btn-success btn-block' {{action 'editarPropiedad'}}>Editar propiedad</button>
+</div>
 {{outlet}}

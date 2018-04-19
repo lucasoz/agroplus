@@ -9,7 +9,7 @@ export default DS.Model.extend({
   telefono: DS.attr('number'),
   correo: DS.attr('string'),
   //Relaciones
-  propiedades: DS.hasMany('propiedad', { async: true, inverse: null }),
+  propiedades: DS.hasMany('propiedad', { async: true}),
   contactos: DS.hasMany('contacto', { async: true, inverse: null }),
   proyectos: DS.hasMany('proyecto', { async: true, inverse: null }),
 });

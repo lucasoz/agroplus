@@ -4,13 +4,13 @@
   <thead>
     <tr>
     <th>Nombre</th>
-    <th>Options</th>
+    <th>Opciones</th>
     </tr>
   </thead>
   <tbody>
     {{#each model as |propiedad|}}
       <tr>
-      <td>{{#link-to 'propiedades.propiedad' propiedad.id}} {{propiedad.name}} {{/link-to}}</td>
+      <td>{{#link-to 'propiedades.propiedad' propiedad.id}} {{propiedad.nombre}} {{/link-to}}</td>
       <td><button type="button" name="button" {{action 'delete' propiedad.id}} class='btn btn-danger'>Eliminar</button></td>
       <td>{{#link-to 'propiedades.propiedad.editar-propiedad' propiedad.id class='btn btn-primary'}}Editar{{/link-to}}</td>
       </tr>
