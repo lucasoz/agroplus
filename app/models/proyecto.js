@@ -9,6 +9,6 @@ export default DS.Model.extend({
   descripcion: DS.attr('string'),
   productoCosecha: DS.attr('string'),
   //Relaciones
-  actividades: DS.hasMany('actividad', { async: true, inverse: null }),
+  actividades: DS.hasMany('actividad', { async: true }),
   usuario: DS.belongsTo('usuario'),
 });

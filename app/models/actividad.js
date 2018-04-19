@@ -8,7 +8,7 @@ export default DS.Model.extend({
   fecha: DS.attr('date'),
   tipo: DS.attr('string'),
   //Relaciones
-  contacto: DS.belongsTo('contacto', { async: true, inverse: null }),
+  contacto: DS.belongsTo('contacto', { async: true }),
   proyecto: DS.belongsTo('proyecto'),
 
 });

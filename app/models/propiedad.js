@@ -9,6 +9,6 @@ export default DS.Model.extend({
   municipio: DS.attr('string'),
   vereda: DS.attr('string'),
   //Relaciones
-  lotes: DS.hasMany('lote', { async: true, inverse: null }),
+  lotes: DS.hasMany('lote', { async: true }),
   usuario: DS.belongsTo('usuario'),
 });

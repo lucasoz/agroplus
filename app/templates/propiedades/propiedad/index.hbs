@@ -1,6 +1,46 @@
-{{model.nombre}} <br>
-{{model.latitud}} <br>
-{{model.longitud}} <br>
-{{model.departamento}} <br>
-{{model.municipio}} <br>
+<h1>Detalles de propiedad</h1>
+<table class="table">
+  <thead>
+    <tr>
+    <th>Nombre</th>
+    <th>Latitud</th>
+    <th>Longitud</th>
+    <th>Departamento</th>
+    <th>Municipio</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <td>{{model.nombre}}</td>
+    <td>{{model.latitud}}</td>
+    <td>{{model.longitud}}</td>
+    <td>{{model.departamento}}</td>
+    <td>{{model.municipio}}</td>
+    </tr>
+  </tbody>
+</table>
+
+
+{{#link-to 'propiedades.propiedad.agregar-lote' class='btn btn-success'}} Agregar lote {{/link-to}}
+<h1>Lotes</h1>
+<table class="table">
+  <thead>
+    <tr>
+    <th>Area</th>
+    <th>Descripción</th>
+    <th>Opciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each model.lotes as |lote|}}
+      <tr>
+      <td>{{lote.id}}</td>
+      <td>{{lote.descripcion}}</td>
+      <td><button type="button" name="button" {{action 'delete' lote.id}} class='btn btn-danger'>Eliminar</button>
+        {{#link-to 'propiedades.propiedad.lote.editar-lote' lote.id class='btn btn-primary'}}Editar{{/link-to}}</td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>
+
 {{outlet}}
