@@ -13,31 +13,29 @@ export default Controller.extend({
       var vereda = this.vereda;
 
       ///verificar que los campos no esten vacios
-      if (nombrePropiedad == '' || nombrePropiedad == undefined) {
-
+      if (nombrePropiedad == '' || nombrePropiedad == undefined ||
+      latitud == '' || latitud == undefined ||
+      longitud == '' || longitud == undefined ||
+      departamento == '' || departamento == undefined ||
+      municipio == '' || municipio == undefined) {
+        alert('Completa todo los campos');
+      }else {
+        ///Guardar la propiedad
+        var usuario = this.model;
+        var nuevaPropiedad = this.store.createRecord('propiedad',{
+          nombre: nombrePropiedad,
+          longitud: longitud,
+          latitud: latitud,
+          departamento: departamento,
+          municipio: municipio,
+          vereda: vereda,
+          usuario: usuario
+        });
+        usuario.get('propiedades').addObject(nuevaPropiedad);
+        nuevaPropiedad.save().then(function(){
+          return usuario.save();
+        });
       }
-
-      ///Guardar la propiedad
-      var usuarioAutenticado = this.get('firebaseApp').auth().currentUser;
-      //var usuario = this.get('store').findRecord('usuario', usuarioAutenticado.uid);
-      var usuario = this.model;
-      //console.log(usuarioAutenticado.uid);
-      // console.log(usuario);
-      //console.log(usuario);
-      var nuevaPropiedad = this.store.createRecord('propiedad',{
-        nombre: nombrePropiedad,
-        longitud: longitud,
-        latitud: latitud,
-        departamento: departamento,
-        municipio: municipio,
-        vereda: vereda,
-        usuario: usuario
-      });
-      //console.log(nuevaPropiedad.nombre);
-      usuario.get('propiedades').addObject(nuevaPropiedad);
-      nuevaPropiedad.save().then(function(){
-        return usuario.save();
-      });
     }
   }
 });
