@@ -34,7 +34,7 @@
   <tbody>
     {{#each model.lotes as |lote|}}
       <tr>
-      <td>{{lote.id}}</td>
+      <td>{{lote.area}}</td>
       <td>{{lote.descripcion}}</td>
       <td><button type="button" name="button" {{action 'delete' lote.id}} class='btn btn-danger'>Eliminar</button>
         {{#link-to 'propiedades.propiedad.lote.editar-lote' lote.id class='btn btn-primary'}}Editar{{/link-to}}</td>
