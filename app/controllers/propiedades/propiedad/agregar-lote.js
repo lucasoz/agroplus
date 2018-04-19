@@ -18,6 +18,9 @@ export default Controller.extend({
         nuevoLote.save().then(function(){
           return propiedad.save();
         });
+        //limpiar campos
+        this.set('area', '');
+        this.set('descripcion', '');
         this.transitionToRoute('propiedades.propiedad',this.get('model').id);
       }
     },
