@@ -3,7 +3,9 @@ import { inject as service } from '@ember/service';
 import { Promise, resolve } from 'rsvp';
 
 export default Route.extend({
+
   firebaseApp: service(),
+  Usuario: null,
   loadUser(numTries) {
     const MAX_NUM_TRIES = 5;
     if (numTries > MAX_NUM_TRIES) {
@@ -23,7 +25,12 @@ export default Route.extend({
 
   model(){
     return this.loadUser(0).then((currentUser) => {
-      return this.get('store').findRecord('usuario', currentUser.uid);
+      if(currentUser != null){
+        return this.get('store').findRecord('usuario', currentUser.uid);
+      }else{
+        return null;
+      }
     });
-  }
+  },
+
 });
