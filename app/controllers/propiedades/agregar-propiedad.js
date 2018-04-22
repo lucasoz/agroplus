@@ -1,12 +1,11 @@
 import Controller from '@ember/controller';
+import {inject} from '@ember/service';
 
 export default Controller.extend({
+  flashMessages: inject(),
   actions:{
     agregarPropiedad(){
       //Para mostrar un error
-      $('#mensaje').empty().removeAttr('style');
-      $('#mensaje').removeClass();
-
       var nombrePropiedad = this.nombrePropiedad;
       var latitud = this.latitud;
       var longitud = this.longitud;
@@ -21,7 +20,9 @@ export default Controller.extend({
       departamento == '' || departamento == undefined ||
       municipio == '' || municipio == undefined) {
         //alert('Completa todo los campos');
-        mostrarMensaje('Completa todos los campos');
+        this.get('flashMessages').danger('Completa todos los campos', {
+          timeout: 10000,
+        });
         //this.transitionToRoute('propiedades');
         ///
         /*
@@ -69,33 +70,43 @@ export default Controller.extend({
                     this.set('departamento', '');
                     this.set('municipio', '');
                     this.set('vereda', '');
-                    alert('Se agrego la propiedad');
+                    this.transitionToRoute('propiedades');
+                    this.get('flashMessages').success('Propiedad agregada correctamente!', {
+                      timeout: 10000,
+                    });
                   }else {
-                    mostrarMensaje('Vereda debe tener solo letras');
+                    this.get('flashMessages').danger('Vereda debe tener solo letras', {
+                      timeout: 10000,
+                    });
                   }
                 }else {
-                  mostrarMensaje('Municipio debe tener solo letras');
+                  this.get('flashMessages').danger('Municipio debe tener solo letras', {
+                    timeout: 10000,
+                  });
+
                 }
               }else{
-                mostrarMensaje('Departamento debe tener solo letras');
+                this.get('flashMessages').danger('Departamento debe tener solo letras', {
+                  timeout: 10000,
+                });
+
               }
             }else{
-              mostrarMensaje('Nombre de propiedad debe tener solo letras');
+              this.get('flashMessages').danger('Nombre de propiedad debe tener solo letras', {
+                timeout: 10000,
+              });
             }
           }else {
-            mostrarMensaje('Longitud no valido, solo números entre -180 y 180');
+
+            this.get('flashMessages').danger('Longitud no valido, solo números entre -180 y 180', {
+              timeout: 10000,
+            });
           }
         }else{
-          mostrarMensaje('Latitud no valido, solo números entre -90 y 90');
+          this.get('flashMessages').danger('Latitud no valido, solo números entre -90 y 90', {
+            timeout: 10000,
+          });
         }
-
-      }
-      function mostrarMensaje(mensaje){
-        $('#mensaje').addClass("alert alert-danger fade in")
-        .append('<button type="button" class="close" data-dismiss="alert" aria-label="Close">'
-          +'<span aria-hidden="true">&times;</span>'
-        +'</button>'
-        +mensaje);
       }
     }
   }
