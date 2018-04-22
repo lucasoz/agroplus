@@ -5,8 +5,8 @@ export default Controller.extend({
   actions: {
     flashMessages: inject(),
     editarLote(){
-      const area = this.get('model.area');
-      const descripcion = this.get('model.descripcion');
+      const area = this.get('area');
+      const descripcion = this.get('descripcion');
       const id = this.get('model.id');
       this.store.findRecord('lote', id).then(function(lote) {
           lote.set('area', area);
