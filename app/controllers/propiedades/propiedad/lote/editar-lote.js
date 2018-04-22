@@ -1,7 +1,9 @@
 import Controller from '@ember/controller';
+import {inject} from '@ember/service';
 
 export default Controller.extend({
   actions: {
+    flashMessages: inject(),
     editarLote(){
       const area = this.get('model.area');
       const descripcion = this.get('model.descripcion');
@@ -12,6 +14,9 @@ export default Controller.extend({
           lote.save();
       });
       this.transitionToRoute('propiedades.propiedad');
+      this.get('flashMessages').success('Lote actualizado correctamente!', {
+        timeout: 10000,
+      });
     },
   },
 });
