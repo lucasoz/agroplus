@@ -1,11 +1,41 @@
-{{#link-to 'ingresar'}}
-ingresar
-{{/link-to}}
-<br>
-{{#link-to 'propiedades'}}
+<h1>Detalles de usuario</h1>
+<table class="table">
+  <thead>
+    <tr>
+    <th>Nombre</th>
+    <th>Apellido</th>
+    <th>Municipio</th>
+    <th>Departamento</th>
+    <th>Teléfono</th>
+    <th>Correo electrónico</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>{{model.nombre}}</td>
+      <td>{{model.apellido}}</td>
+      <td>{{model.municipio}}</td>
+      <td>{{model.departamento}}</td>
+      <td>{{model.telefono}}</td>
+      <td>{{model.correo}}</td>
+    </tr>
+  </tbody>
+</table>
+<div class="text-center">
+
+<button type="button" name="button" class='btn btn-primary'>Proyectos</button>
+
+<button type="button" name="button" class='btn btn-success'>
+Contactos
+</button>
+
+{{#link-to 'propiedades' class='btn btn-warning'}}
 Propiedades
 {{/link-to}}
 
-<button type="button" {{action 'CerrarSesion'}}>Cerrar sesion</button>
+<button type="button" name="button" class='btn btn-info'>
+Editar Usuario
+</button>
+
+</div>
 {{outlet}}
-<!-- <a {{action 'cerrarSesion'}} class='btn btn-danger'>Cerrar Sesión</a> -->
