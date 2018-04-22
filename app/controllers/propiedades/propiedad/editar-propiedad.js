@@ -12,7 +12,7 @@ export default Controller.extend({
       if(nuevoNombrePropiedad == '' || nuevoNombrePropiedad == undefined){
         mostrarMensaje('Llene el campo');
       }else{
-        if(/^[A-Za-z ]+$/.test(nuevoNombrePropiedad)){
+        if(/^[A-Za-zÀ-ÿ\u00f1\u00d1 ]+$/.test(nuevoNombrePropiedad)){
           //actualiza nombre
           propiedad.set('nombre', nuevoNombrePropiedad);
           propiedad.save();

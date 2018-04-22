@@ -39,13 +39,13 @@ export default Controller.extend({
           ///validad longitud -180,180
           if (/^[-+]?(180(\.0+)?|((1[0-7]\d)|([1-9]?\d))(\.\d+)?)$/.test(longitud)) {
             ///valida que nombrePropiedad solo tenga letras
-            if (/^[A-Za-z ]+$/.test(nombrePropiedad)) {
+            if (/^[A-Za-zÀ-ÿ\u00f1\u00d1 ]+$/.test(nombrePropiedad)) {
               /// valida que departamento solo tenga letras
-              if (/^[A-Za-z ]+$/.test(departamento)) {
+              if (/^[A-Za-zÀ-ÿ\u00f1\u00d1 ]+$/.test(departamento)) {
                 /// valida que municipio solo letras
-                if (/^[A-Za-z ]+$/.test(municipio)) {
+                if (/^[A-Za-zÀ-ÿ\u00f1\u00d1 ]+$/.test(municipio)) {
                   ///valida que vereda solo letras
-                  if (/^[A-Za-z ]*$/.test(vereda)) {
+                  if (/^[A-Za-zÀ-ÿ\u00f1\u00d1 ]*$/.test(vereda)) {
                     /// guardad datos
                     var usuario = this.model;
                     var nuevaPropiedad = this.store.createRecord('propiedad',{
