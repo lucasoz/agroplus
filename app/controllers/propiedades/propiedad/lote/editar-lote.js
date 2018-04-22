@@ -5,8 +5,8 @@ export default Controller.extend({
   actions: {
     flashMessages: service,
     editarLote(){
-      const area = this.get('model.area');
-      const descripcion = this.get('model.descripcion');
+      const area = this.get('area');
+      const descripcion = this.get('descripcion');
       const id = this.get('model.id');
       if(area == '' || area == undefined
         || descripcion == '' || descripcion == undefined){

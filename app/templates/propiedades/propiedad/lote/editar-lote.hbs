@@ -5,12 +5,12 @@
 <div class="form-signin">
   <div class="input-group">
     <span class="input-group-addon" id="basic-addon1">Área(m<sup>2</sup>)</span>
-    {{input type="number" value=model.area class="form-control" aria-describedby="basic-addon1"}}
+    {{input type="number" value=area class="form-control" placeholder="23" aria-describedby="basic-addon1"}}
   </div>
 <br>
   <div class="input-group">
     <span class="input-group-addon" id="basic-addon1">Descripción</span>
-    {{textarea value=model.descripcion class='form-control' aria-describedby="basic-addon1"}}
+    {{textarea value=descripcion class='form-control' placeholder='Lote destinado al almacenamieto del producto' aria-describedby="basic-addon1"}}
   </div>
 <br>
   <button type="button"  class='btn btn-lg btn-success btn-block' {{action 'editarLote'}}>Actualizar lote</button>

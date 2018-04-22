@@ -6,6 +6,9 @@
           {{/link-to}}
         </div>
         <div class="navbar-form navbar-right">
+          {{#link-to 'propiedades' class='btn btn-warning'}}
+          Propiedades
+          {{/link-to}}
           <a {{action 'cerrarSesion'}} class='btn btn-danger'>Cerrar Sesión</a>
         </div>
     </div>
@@ -16,5 +19,6 @@
     <div class="panel-body">
       {{outlet}}
     </div>
+    <div class="panel-footer">AgroPlus 2018</div>
   </div>
 </div>
