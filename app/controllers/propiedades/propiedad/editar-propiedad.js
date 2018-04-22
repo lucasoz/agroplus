@@ -20,6 +20,7 @@ export default Controller.extend({
           ///limpiar campo
           this.set('nombrePropiedad', '');
           this.transitionToRoute('propiedades');
+          alert('La propiedad fue actuaizada correctamente!'),
           this.get('flashMessages').success('La propiedad fue actuaizada correctamente!', {
             timeout: 10000,
           });

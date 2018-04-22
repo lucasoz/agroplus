@@ -27,7 +27,7 @@ export default Controller.extend({
         this.set('area', '');
         this.set('descripcion', '');
         this.transitionToRoute('propiedades.propiedad');
-        this.get('flashMessages').success('Lote agregado correctamente', {
+        this.get('flashMessages').success('Lote agregado correctamente!', {
           timeout: 10000,
         });
       }
