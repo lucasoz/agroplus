@@ -15,7 +15,7 @@ Router.map(function() {
       this.route('editar-propiedad');
       this.route('agregar-lote');
 
-      this.route('lote', { path: ':id'}, function() {
+      this.route('lote', { path: ':id1'}, function() {
         this.route('editar-lote');
       });
       this.route('lotes');
