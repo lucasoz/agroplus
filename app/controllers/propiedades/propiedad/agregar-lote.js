@@ -26,7 +26,7 @@ export default Controller.extend({
         //limpiar campos
         this.set('area', '');
         this.set('descripcion', '');
-        this.transitionToRoute('propiedades.propiedad',this.get('model').id);
+        this.transitionToRoute('propiedades.propiedad');
         this.get('flashMessages').success('Lote agregado correctamente', {
           timeout: 10000,
         });
