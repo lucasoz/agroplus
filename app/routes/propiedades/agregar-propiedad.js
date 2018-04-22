@@ -1,10 +1,13 @@
 import Route from '@ember/routing/route';
-import {inject} from '@ember/service';
 
 export default Route.extend({
-  firebaseApp: inject(),
   model(){
-    var usuarioAutenticado = this.get('firebaseApp').auth().currentUser;
-    return this.get('store').findRecord('usuario', usuarioAutenticado.uid);
+    let Usuario;
+    if (this.modelFor('index') != null) {
+      Usuario = this.modelFor('index');
+    }else{
+      Usuario = this.modelFor('application');
+    }
+    return Usuario;
   }
 });

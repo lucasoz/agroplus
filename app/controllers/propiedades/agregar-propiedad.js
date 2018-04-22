@@ -1,10 +1,12 @@
 import Controller from '@ember/controller';
-import {inject} from '@ember/service';
 
 export default Controller.extend({
-  firebaseApp: inject(),
   actions:{
     agregarPropiedad(){
+      //Para mostrar un error
+      $('#mensaje').empty().removeAttr('style');
+      $('#mensaje').removeClass();
+
       var nombrePropiedad = this.nombrePropiedad;
       var latitud = this.latitud;
       var longitud = this.longitud;
@@ -18,7 +20,19 @@ export default Controller.extend({
       longitud == '' || longitud == undefined ||
       departamento == '' || departamento == undefined ||
       municipio == '' || municipio == undefined) {
-        alert('Completa todo los campos');
+        //alert('Completa todo los campos');
+        mostrarMensaje('Completa todos los campos');
+        //this.transitionToRoute('propiedades');
+        ///
+        /*
+        window.setTimeout(function() {
+          $(".alert").fadeTo(500, 0).slideUp(500, function(){
+            //$(this).remove();
+            $(this).empty().removeAttr('style');
+            $(this).removeClass('alert alert-success');
+          });
+        }, 4000);
+        */
       }else {
         ///valida latitud -90,90
         if(/^[-+]?([1-8]?\d(\.\d+)?|90(\.0+)?)$/.test(latitud)){
@@ -57,24 +71,31 @@ export default Controller.extend({
                     this.set('vereda', '');
                     alert('Se agrego la propiedad');
                   }else {
-                    alert('Vereda debe tener solo letras');
+                    mostrarMensaje('Vereda debe tener solo letras');
                   }
                 }else {
-                  alert('Municipio debe tener solo letras');
+                  mostrarMensaje('Municipio debe tener solo letras');
                 }
               }else{
-                alert('Departamento debe tener solo letras');
+                mostrarMensaje('Departamento debe tener solo letras');
               }
             }else{
-              alert('Nombre de propiedad debe tener solo letras');
+              mostrarMensaje('Nombre de propiedad debe tener solo letras');
             }
           }else {
-            alert('Longitud no valido');
+            mostrarMensaje('Longitud no valido, solo números entre -180 y 180');
           }
         }else{
-          alert('Latitud no valido');
+          mostrarMensaje('Latitud no valido, solo números entre -90 y 90');
         }
 
+      }
+      function mostrarMensaje(mensaje){
+        $('#mensaje').addClass("alert alert-danger fade in")
+        .append('<button type="button" class="close" data-dismiss="alert" aria-label="Close">'
+          +'<span aria-hidden="true">&times;</span>'
+        +'</button>'
+        +mensaje);
       }
     }
   }
