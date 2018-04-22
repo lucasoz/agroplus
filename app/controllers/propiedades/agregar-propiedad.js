@@ -20,7 +20,7 @@ export default Controller.extend({
       departamento == '' || departamento == undefined ||
       municipio == '' || municipio == undefined) {
         //alert('Completa todo los campos');
-        this.get('flashMessages').danger('Completa todos los campos', {
+        this.get('flashMessages').warning('Completa todos los campos', {
           timeout: 10000,
         });
         //this.transitionToRoute('propiedades');
@@ -75,35 +75,35 @@ export default Controller.extend({
                       timeout: 10000,
                     });
                   }else {
-                    this.get('flashMessages').danger('Vereda debe tener solo letras', {
+                    this.get('flashMessages').warning('Vereda debe tener solo letras', {
                       timeout: 10000,
                     });
                   }
                 }else {
-                  this.get('flashMessages').danger('Municipio debe tener solo letras', {
+                  this.get('flashMessages').warning('Municipio debe tener solo letras', {
                     timeout: 10000,
                   });
 
                 }
               }else{
-                this.get('flashMessages').danger('Departamento debe tener solo letras', {
+                this.get('flashMessages').warning('Departamento debe tener solo letras', {
                   timeout: 10000,
                 });
 
               }
             }else{
-              this.get('flashMessages').danger('Nombre de propiedad debe tener solo letras', {
+              this.get('flashMessages').warning('Nombre de propiedad debe tener solo letras', {
                 timeout: 10000,
               });
             }
           }else {
 
-            this.get('flashMessages').danger('Longitud no valido, solo números entre -180 y 180', {
+            this.get('flashMessages').warning('Longitud no valido, solo números entre -180 y 180', {
               timeout: 10000,
             });
           }
         }else{
-          this.get('flashMessages').danger('Latitud no valido, solo números entre -90 y 90', {
+          this.get('flashMessages').warning('Latitud no valido, solo números entre -90 y 90', {
             timeout: 10000,
           });
         }

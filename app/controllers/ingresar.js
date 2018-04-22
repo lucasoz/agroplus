@@ -2,13 +2,10 @@ import Controller from '@ember/controller';
 import {inject} from '@ember/service';
 
 export default Controller.extend({
+  flashMessages: inject(),
   firebaseApp: inject(),
   actions:{
     IniciarSesion(){
-      //Para mostrar un error
-      $('#mensaje').empty().removeAttr('style');
-      $('#mensaje').removeClass();
-
       var nombreUsuario = this.get('nombreUsuario');
       var contrasena = this.get('contrasena');
       this.get('firebaseApp').auth().signInWithEmailAndPassword(nombreUsuario, contrasena).then(() => {
@@ -19,22 +16,19 @@ export default Controller.extend({
         // Handle Errors here.
         var errorCode = error.code;
         if(errorCode == 'auth/invalid-email'){
-          mostrarMensaje('Correo no valido');
+          this.get('flashMessages').danger('Correo no valido', {
+            timeout: 10000,
+          });
         }else if (errorCode == 'auth/user-not-found') {
-          mostrarMensaje('Correo no existe');
+          this.get('flashMessages').danger('Correo no existe', {
+            timeout: 10000,
+          });
         }else if (errorCode == 'auth/wrong-password') {
-          mostrarMensaje('Contraseña no es correcta');
-        }else {
-          // console.log(errorMessage);
+          this.get('flashMessages').danger('Contraseña no es correcta', {
+            timeout: 10000,
+          });
         }
       });
-      function mostrarMensaje(mensaje){
-        $('#mensaje').addClass("alert alert-danger fade in")
-        .append('<button type="button" class="close" data-dismiss="alert" aria-label="Close">'
-          +'<span aria-hidden="true">&times;</span>'
-        +'</button>'
-        +mensaje);
-      }
     },
   }
 });

@@ -2,6 +2,7 @@ import Controller from '@ember/controller';
 import {inject} from '@ember/service';
 
 export default Controller.extend({
+  flashMessages: inject(),
   firebaseApp: inject(),
   actions:{
     agregarUsuario(){
@@ -20,7 +21,9 @@ export default Controller.extend({
       || telefono == '' || telefono == undefined
       || correo == '' || correo == undefined
       || contrasena == '' || contrasena == undefined){
-        alert('Llene todos los campos');
+        this.get('flashMessages').warning('Ingrese todos los datos', {
+          timeout: 10000,
+        });
       }else{
         if(/^[A-Za-zÀ-ÿ\u00f1\u00d1 ]+$/.test(nombre)){
           if (/^[A-Za-zÀ-ÿ\u00f1\u00d1 ]+$/.test(apellido)) {
@@ -46,11 +49,17 @@ export default Controller.extend({
                     var errorCode = error.code;
                     // var errorMessage = error.message;
                     if(errorCode == 'auth/email-already-in-use'){
-                      alert('Correo ya existe');
+                      this.get('flashMessages').danger('El correo ingresado ya existe!', {
+                        timeout: 10000,
+                      });
                     }else if (errorCode == 'auth/invalid-email') {
-                      alert('Correo no valido');
+                      this.get('flashMessages').warning('Correo no valido', {
+                        timeout: 10000,
+                      });
                     }else if (errorCode == 'auth/weak-password') {
-                      alert('Contraseña no es fuerte');
+                      this.get('flashMessages').warning('Contraseña debe tener al menos 6 caracteres', {
+                        timeout: 10000,
+                      });
                       this.set('contrasena', '');
                     }
                   });
@@ -63,19 +72,29 @@ export default Controller.extend({
                   this.set('correo', '');
                   this.set('contrasena', '');
                 }else {
-                  alert('Telefono debe tener solo numeros');
+                  this.get('flashMessages').warning('Telefono debe tener solo numeros', {
+                    timeout: 10000,
+                  });
                 }
               }else {
-                alert('Municipio debe tener solo letras');
+                this.get('flashMessages').warning('Municipio debe tener solo letras', {
+                  timeout: 10000,
+                });
               }
             }else {
-              alert('Departamento debe tener solo letras');
+              this.get('flashMessages').warning('Departamento debe tener solo letras', {
+                timeout: 10000,
+              });
             }
           }else {
-            alert('Apellido debe tener solo letras');
+            this.get('flashMessages').warning('Apellido debe tener solo letras', {
+              timeout: 10000,
+            });
           }
         }else {
-          alert('Nombre debe tener solo letras');
+          this.get('flashMessages').warning('Nombre debe tener solo letras', {
+            timeout: 10000,
+          });
         }
       }
     }

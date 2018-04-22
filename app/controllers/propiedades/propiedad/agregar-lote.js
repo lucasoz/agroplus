@@ -1,17 +1,18 @@
 import Controller from '@ember/controller';
+import {inject} from '@ember/service';
 
 export default Controller.extend({
+  flashMessages: inject(),
   actions: {
     agregarLote(){
-      $('#mensaje').empty().removeAttr('style');
-      $('#mensaje').removeClass();
-
       const area = this.get('area');
       const descripcion = this.get('descripcion');
 
       if (area == '' || area == undefined
       || descripcion == '' || descripcion == undefined) {
-        mostrarMensaje('Completa todos los campos');
+        this.get('flashMessages').warning('Completa todos los campos', {
+          timeout: 10000,
+        });
       } else {
         var propiedad = this.model;
         var nuevoLote = this.store.createRecord('lote', {
@@ -26,13 +27,9 @@ export default Controller.extend({
         this.set('area', '');
         this.set('descripcion', '');
         this.transitionToRoute('propiedades.propiedad',this.get('model').id);
-      }
-      function mostrarMensaje(mensaje){
-        $('#mensaje').addClass("alert alert-danger fade in")
-        .append('<button type="button" class="close" data-dismiss="alert" aria-label="Close">'
-          +'<span aria-hidden="true">&times;</span>'
-        +'</button>'
-        +mensaje);
+        this.get('flashMessages').success('Lote agregado correctamente', {
+          timeout: 10000,
+        });
       }
     },
   },

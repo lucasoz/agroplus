@@ -1,8 +1,19 @@
+{{#each flashMessages.queue as |flash|}}
+  {{#flash-message flash=flash as |component flash|}}
+    <b>{{component.flashType}}!</b>
+    {{flash.message}}
+  {{/flash-message}}
+{{/each}}
 <div class='page-header form-signin '>
     <h1>Editar lote</h1>
 </div>
-<h3 class="form-signin">{{mensaje}}</h3>
 <div class="form-signin">
+  {{#each flashMessages.queue as |flash|}}
+    {{#flash-message flash=flash as |component flash|}}
+      <b>{{component.flashType}}!</b>
+      {{flash.message}}
+    {{/flash-message}}
+  {{/each}}
   <div class="input-group">
     <span class="input-group-addon" id="basic-addon1">Área(m<sup>2</sup>)</span>
     {{input type="number" value=area class="form-control" placeholder="23" aria-describedby="basic-addon1"}}

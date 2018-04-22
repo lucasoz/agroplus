@@ -1,11 +1,11 @@
+{{#link-to 'propiedades.agregar-propiedad' class='btn btn-success'}} Agregar propiedad {{/link-to}}
+<h1>Propiedades</h1>
 {{#each flashMessages.queue as |flash|}}
   {{#flash-message flash=flash as |component flash|}}
+    <b>{{component.flashType}}!</b>
     {{flash.message}}
   {{/flash-message}}
 {{/each}}
-
-{{#link-to 'propiedades.agregar-propiedad' class='btn btn-success'}} Agregar propiedad {{/link-to}}
-<h1>Propiedades</h1>
 <table class="table">
   <thead>
     <tr>

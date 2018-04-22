@@ -1,15 +1,15 @@
-{{#each flashMessages.queue as |flash|}}
-  {{#flash-message flash=flash as |component flash|}}
-    {{flash.message}}
-  {{/flash-message}}
-{{/each}}
 <div class='page-header form-signin '>
     <h1>Ingreso</h1>
 </div>
 <div class="form-signin">
-  <div id="mensaje" role="alert">
+  {{#each flashMessages.queue as |flash|}}
+    {{#flash-message flash=flash as |component flash|}}
+      <b>{{component.flashType}}!</b>
+      {{flash.message}}
+    {{/flash-message}}
+  {{/each}}
 
-  </div>
+
   <div class="input-group">
     <span class="input-group-addon" id="basic-addon1">@</span>
     {{input type="text" value=nombreUsuario class="form-control" id="inputEmail" placeholder="Nombre usuario" aria-describedby="basic-addon1"}}
@@ -24,9 +24,9 @@
       {{fa-icon 'sign-in'}} Iniciar Sesión
   </button>
 <br>
-</div >
+
 <div class="form-signin">
   {{#link-to 'registrar-usuario' class='btn btn-lg btn-success btn-block'}}Agregar usuario{{/link-to}}
 </div>
-
+</div>
 {{outlet}}

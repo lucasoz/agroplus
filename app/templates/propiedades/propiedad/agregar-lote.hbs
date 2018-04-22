@@ -2,9 +2,13 @@
     <h1>Ingresar lote</h1>
 </div>
 <div class="form-signin">
-  <div id="mensaje" role="alert">
+  {{#each flashMessages.queue as |flash|}}
+    {{#flash-message flash=flash as |component flash|}}
+      <b>{{component.flashType}}!</b>
+      {{flash.message}}
+    {{/flash-message}}
+  {{/each}}
 
-  </div>
   <div class="input-group">
     <span class="input-group-addon" id="basic-addon1">Área(m<sup>2</sup>)</span>
     {{input type="number" value=area class="form-control" placeholder="23" aria-describedby="basic-addon1"}}
