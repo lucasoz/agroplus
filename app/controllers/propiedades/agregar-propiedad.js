@@ -23,17 +23,6 @@ export default Controller.extend({
         this.get('flashMessages').warning('Completa todos los campos', {
           timeout: 10000,
         });
-        //this.transitionToRoute('propiedades');
-        ///
-        /*
-        window.setTimeout(function() {
-          $(".alert").fadeTo(500, 0).slideUp(500, function(){
-            //$(this).remove();
-            $(this).empty().removeAttr('style');
-            $(this).removeClass('alert alert-success');
-          });
-        }, 4000);
-        */
       }else {
         ///valida latitud -90,90
         if(/^[-+]?([1-8]?\d(\.\d+)?|90(\.0+)?)$/.test(latitud)){

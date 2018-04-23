@@ -13,18 +13,25 @@ export default Controller.extend({
           timeout: 10000,
         });
       }else{
-        this.store.findRecord('lote', id).then(function(lote) {
-            lote.set('area', area);
-            lote.set('descripcion', descripcion);
-            lote.save();
-        });
-        this.set('area', '');
-        this.set('descripcion', '');
-        this.transitionToRoute('propiedades.propiedad');
-        this.get('flashMessages').success('Lote actualizado correctamente!', {
-          timeout: 10000,
-        });
-        alert('Lote actualizado correctamente!');
+        if (/^d+$/.test(area)) {
+          this.store.findRecord('lote', id).then(function(lote) {
+              lote.set('area', area);
+              lote.set('descripcion', descripcion);
+              lote.save();
+          });
+          this.set('area', '');
+          this.set('descripcion', '');
+          this.transitionToRoute('propiedades.propiedad');
+          this.get('flashMessages').success('Lote actualizado correctamente!', {
+            timeout: 10000,
+          });
+          alert('Lote actualizado correctamente!');
+        }else {
+          this.get('flashMessages').warning('El area debe ser solo numeros', {
+            timeout: 10000,
+          });
+        }
+
       }
     },
   },
