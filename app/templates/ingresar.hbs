@@ -12,7 +12,7 @@
 
   <div class="input-group">
     <span class="input-group-addon" id="basic-addon1">@</span>
-    {{input type="text" value=nombreUsuario class="form-control" id="inputEmail" placeholder="Nombre usuario" aria-describedby="basic-addon1"}}
+    {{input type="text" value=correo class="form-control" id="inputEmail" placeholder="Correo" aria-describedby="basic-addon1"}}
   </div>
   <br>
   <div class="input-group">
@@ -20,7 +20,7 @@
     {{input type="password" value=contrasena class="form-control" id="inputPassword" placeholder="Contraseña" aria-describedby="basic-addon1"}}
   </div>
 <br>
-  <button class='btn btn-lg btn-primary btn-block' {{action 'IniciarSesion'}}>
+  <button class='btn btn-lg btn-primary btn-block' {{action 'iniciarSesion'}}>
       {{fa-icon 'sign-in'}} Iniciar Sesión
   </button>
 <br>

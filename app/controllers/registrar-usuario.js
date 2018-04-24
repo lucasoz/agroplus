@@ -29,7 +29,7 @@ export default Controller.extend({
           if (/^[A-Za-zÀ-ÿ\u00f1\u00d1 ]+$/.test(apellido)) {
             if (/^[A-Za-zÀ-ÿ\u00f1\u00d1 ]+$/.test(departamento)) {
               if (/^[A-Za-zÀ-ÿ\u00f1\u00d1 ]+$/.test(municipio)) {
-                if (/^[A-Za-zÀ-ÿ\u00f1\u00d1 ]+$/.test(telefono)) {
+                if (/^d+$/.test(telefono)) {
                   ///
                   this.get('firebaseApp').auth().createUserWithEmailAndPassword(correo, contrasena).then(({uid})=>{
 
@@ -47,7 +47,6 @@ export default Controller.extend({
                   }).catch((error) =>{
                     // Handle Errors here.
                     var errorCode = error.code;
-                    // var errorMessage = error.message;
                     if(errorCode == 'auth/email-already-in-use'){
                       this.get('flashMessages').danger('El correo ingresado ya existe!', {
                         timeout: 10000,

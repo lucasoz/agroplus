@@ -30,13 +30,4 @@ export default Route.extend({
       }
     });
   },
-  actions:{
-    CerrarSesion(){
-      this.get('firebaseApp').auth().signOut().then(()=> {
-        this.replaceWith('ingresar');
-      });
-      // .catch(function(error) {
-      // });
-    }
-  }
 });

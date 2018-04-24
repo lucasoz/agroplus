@@ -5,30 +5,39 @@ export default Controller.extend({
   flashMessages: inject(),
   firebaseApp: inject(),
   actions:{
-    IniciarSesion(){
-      var nombreUsuario = this.get('nombreUsuario');
+    iniciarSesion(){
+      var correo = this.get('correo');
       var contrasena = this.get('contrasena');
-      this.get('firebaseApp').auth().signInWithEmailAndPassword(nombreUsuario, contrasena).then(() => {
-        this.set('nombreUsuario', '');
-        this.set('contrasena', '');
-        this.transitionToRoute('index');
-      }).catch((error) =>{
-        // Handle Errors here.
-        var errorCode = error.code;
-        if(errorCode == 'auth/invalid-email'){
-          this.get('flashMessages').danger('Correo no valido', {
-            timeout: 10000,
-          });
-        }else if (errorCode == 'auth/user-not-found') {
-          this.get('flashMessages').danger('Correo no existe', {
-            timeout: 10000,
-          });
-        }else if (errorCode == 'auth/wrong-password') {
-          this.get('flashMessages').danger('Contraseña no es correcta', {
-            timeout: 10000,
-          });
-        }
-      });
+
+      //validacion
+      if (correo == '' || correo == undefined
+      || contrasena == '' || contrasena == undefined) {
+        this.get('flashMessages').danger('Ingrese datos', {
+          timeout: 10000,
+        });
+      }else{
+        this.get('firebaseApp').auth().signInWithEmailAndPassword(correo, contrasena).then(() => {
+          this.set('correo', '');
+          this.set('contrasena', '');
+          this.transitionToRoute('index');
+        }).catch((error) =>{
+          // Handle Errors here.
+          var errorCode = error.code;
+          if(errorCode == 'auth/invalid-email'){
+            this.get('flashMessages').danger('Correo no valido', {
+              timeout: 10000,
+            });
+          }else if (errorCode == 'auth/user-not-found') {
+            this.get('flashMessages').danger('Correo no existe', {
+              timeout: 10000,
+            });
+          }else if (errorCode == 'auth/wrong-password') {
+            this.get('flashMessages').danger('Contraseña no es correcta', {
+              timeout: 10000,
+            });
+          }
+        });
+      }
     },
   }
 });
