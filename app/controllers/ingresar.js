@@ -6,8 +6,8 @@ export default Controller.extend({
   firebaseApp: inject(),
   actions:{
     iniciarSesion(){
-      var correo = this.get('correo');
-      var contrasena = this.get('contrasena');
+      const correo = this.get('correo');
+      const contrasena = this.get('contrasena');
 
       //validacion
       if (correo == '' || correo == undefined
@@ -22,7 +22,7 @@ export default Controller.extend({
           this.transitionToRoute('index');
         }).catch((error) =>{
           // Handle Errors here.
-          var errorCode = error.code;
+          let errorCode = error.code;
           if(errorCode == 'auth/invalid-email'){
             this.get('flashMessages').danger('Correo no valido', {
               timeout: 10000,

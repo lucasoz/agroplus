@@ -6,13 +6,13 @@ export default Controller.extend({
   firebaseApp: inject(),
   actions:{
     agregarUsuario(){
-      const nombre = this.nombre;
-      const apellido = this.apellido;
-      const municipio = this.municipio;
-      const departamento = this.departamento;
-      const telefono = this.telefono;
-      const correo = this.correo;
-      const contrasena = this.contrasena;
+      const nombre = this.get('nombre');
+      const apellido = this.get('apellido');
+      const municipio = this.get('municipio');
+      const departamento = this.get('departamento');
+      const telefono = this.get('telefono');
+      const correo = this.get('correo');
+      const contrasena = this.get('contrasena');
 
       if(nombre == '' || nombre == undefined
       || apellido == '' || apellido == undefined
@@ -33,7 +33,7 @@ export default Controller.extend({
                   ///
                   this.get('firebaseApp').auth().createUserWithEmailAndPassword(correo, contrasena).then(({uid})=>{
 
-                    var nuevoUsuario = this.store.createRecord('usuario',{
+                    let nuevoUsuario = this.store.createRecord('usuario',{
                       id: uid,
                       nombre: nombre,
                       apellido: apellido,
@@ -46,7 +46,7 @@ export default Controller.extend({
                     this.transitionToRoute('index');
                   }).catch((error) =>{
                     // Handle Errors here.
-                    var errorCode = error.code;
+                    let errorCode = error.code;
                     if(errorCode == 'auth/email-already-in-use'){
                       this.get('flashMessages').danger('El correo ingresado ya existe!', {
                         timeout: 10000,

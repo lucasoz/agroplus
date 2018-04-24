@@ -5,8 +5,8 @@ export default Controller.extend({
   flashMessages: inject(),
   actions:{
     editarPropiedad(){
-      var propiedad = this.model;
-      var nuevoNombrePropiedad = this.nombrePropiedad;
+      const propiedad = this.get('model');
+      const nuevoNombrePropiedad = this.get('nombrePropiedad');
 
       if(nuevoNombrePropiedad == '' || nuevoNombrePropiedad == undefined){
         this.get('flashMessages').warning('Ingrese el nuevo nombre de la propiedad', {

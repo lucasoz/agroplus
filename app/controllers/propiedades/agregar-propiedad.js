@@ -6,12 +6,12 @@ export default Controller.extend({
   actions:{
     agregarPropiedad(){
       //Para mostrar un error
-      var nombrePropiedad = this.nombrePropiedad;
-      var latitud = this.latitud;
-      var longitud = this.longitud;
-      var departamento = this.departamento;
-      var municipio = this.municipio;
-      var vereda = this.vereda;
+      const nombrePropiedad = this.get('nombrePropiedad');
+      const latitud = this.get('latitud');
+      const longitud = this.get('longitud');
+      const departamento = this.get('departamento');
+      const municipio = this.get('municipio');
+      const vereda = this.get('vereda');
 
       ///verificar que los campos no esten vacios
       if (nombrePropiedad == '' || nombrePropiedad == undefined ||
