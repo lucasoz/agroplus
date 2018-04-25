@@ -13,7 +13,7 @@ export default Controller.extend({
           timeout: 10000,
         });
       }else{
-        if (/^d+$/.test(area)) {
+        if (/^[0-9]+$/.test(area)) {
           this.store.findRecord('lote', id).then(function(lote) {
               lote.set('area', area);
               lote.set('descripcion', descripcion);

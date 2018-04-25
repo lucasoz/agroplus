@@ -29,7 +29,7 @@ export default Controller.extend({
           if (/^[A-Za-zÀ-ÿ\u00f1\u00d1 ]+$/.test(apellido)) {
             if (/^[A-Za-zÀ-ÿ\u00f1\u00d1 ]+$/.test(departamento)) {
               if (/^[A-Za-zÀ-ÿ\u00f1\u00d1 ]+$/.test(municipio)) {
-                if (/^d+$/.test(telefono)) {
+                if (/^[0-9]+$/.test(telefono)) {
                   ///
                   this.get('firebaseApp').auth().createUserWithEmailAndPassword(correo, contrasena).then(({uid})=>{
 
@@ -44,6 +44,14 @@ export default Controller.extend({
                     });
                     nuevoUsuario.save();
                     this.transitionToRoute('index');
+                    ///limpiar compos
+                    this.set('nombre', '');
+                    this.set('apellido', '');
+                    this.set('departamento', '');
+                    this.set('municipio', '');
+                    this.set('telefono', '');
+                    this.set('correo', '');
+                    this.set('contrasena', '');
                   }).catch((error) =>{
                     // Handle Errors here.
                     let errorCode = error.code;
@@ -62,14 +70,6 @@ export default Controller.extend({
                       this.set('contrasena', '');
                     }
                   });
-                  ///limpiar compos
-                  this.set('nombre', '');
-                  this.set('apellido', '');
-                  this.set('departamento', '');
-                  this.set('municipio', '');
-                  this.set('telefono', '');
-                  this.set('correo', '');
-                  this.set('contrasena', '');
                 }else {
                   this.get('flashMessages').warning('Telefono debe tener solo numeros', {
                     timeout: 10000,

@@ -14,7 +14,7 @@ export default Controller.extend({
           timeout: 10000,
         });
       } else {
-        if (/^d+$/.test(area)) {
+        if (/^[0-9]+$/.test(area)) {
           const propiedad = this.model;
           const nuevoLote = this.store.createRecord('lote', {
             area: this.area,
