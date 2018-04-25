@@ -30,4 +30,14 @@ export default Route.extend({
       }
     });
   },
+  setupController(controller, model){
+    this._super(...arguments);
+    this.get('firebaseApp').auth().onAuthStateChanged((usuario)=>{
+      if (usuario) {
+        controller.set('model.authenticate', true);
+      } else {
+        controller.set('model.authenticate', false);
+      }
+    });
+  },
 });
