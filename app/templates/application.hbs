@@ -6,12 +6,10 @@
           {{/link-to}}
         </div>
         <div class="navbar-form navbar-right">
-          {{#if model.authenticate}}
-            {{#link-to 'propiedades' class='btn btn-warning'}}
-            Propiedades
-            {{/link-to}}
-            <a {{action 'cerrarSesion'}} class='btn btn-danger'>Cerrar Sesión</a>
-          {{/if}}
+          {{#link-to 'propiedades' class='btn btn-warning'}}
+          Propiedades
+          {{/link-to}}
+          <a {{action 'cerrarSesion'}} class='btn btn-danger'>Cerrar Sesión</a>
         </div>
     </div>
 </nav>
