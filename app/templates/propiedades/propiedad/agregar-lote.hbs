@@ -20,5 +20,8 @@
   </div>
 <br>
   <button type="button"  class='btn btn-lg btn-success btn-block' {{action 'agregarLote'}}>Agregar lote</button>
+  {{#link-to 'propiedades.propiedad' class='btn btn-lg btn-danger btn-block'}}
+    Cancelar
+  {{/link-to}}
 </div>
 {{outlet}}

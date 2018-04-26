@@ -50,5 +50,11 @@
   </div>
 <br>
   <button type="button"  class='btn btn-lg btn-success btn-block' {{action 'agregarUsuario'}}>Agregar usuario</button>
+<br>
+  {{#link-to 'ingresar' class='btn btn-lg btn-danger btn-block'}}
+    Cancelar
+  {{/link-to}}
 </div>
+
+
 {{outlet}}

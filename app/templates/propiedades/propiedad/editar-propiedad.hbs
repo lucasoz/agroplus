@@ -23,5 +23,8 @@
   <span>Vereda: {{model.vereda}}</span><br>
   <br>
   <button type="button"  class='btn btn-lg btn-success btn-block' {{action 'editarPropiedad'}}>Editar propiedad</button>
+  {{#link-to 'propiedades.index' class='btn btn-lg btn-danger btn-block'}}
+    Cancelar
+  {{/link-to}}
 </div>
 {{outlet}}
