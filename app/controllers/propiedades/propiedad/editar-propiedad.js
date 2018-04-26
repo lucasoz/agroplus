@@ -9,7 +9,7 @@ export default Controller.extend({
       const nuevoNombrePropiedad = this.get('nombrePropiedad');
 
       if(nuevoNombrePropiedad == '' || nuevoNombrePropiedad == undefined){
-        this.get('flashMessages').warning('Ingrese el nuevo nombre de la propiedad', {
+        this.get('flashMessages').warning('Hay campos obligatorios que no se han llenado. Intentelo de nuevo', {
           timeout: 10000,
         });
       }else{

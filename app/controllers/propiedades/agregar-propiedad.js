@@ -20,7 +20,7 @@ export default Controller.extend({
       departamento == '' || departamento == undefined ||
       municipio == '' || municipio == undefined) {
         //alert('Completa todo los campos');
-        this.get('flashMessages').warning('Completa todos los campos', {
+        this.get('flashMessages').warning('Hay campos obligatorios que no se han llenado. Intentelo de nuevo', {
           timeout: 10000,
         });
       }else {

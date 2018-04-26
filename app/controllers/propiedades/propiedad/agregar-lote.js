@@ -10,15 +10,15 @@ export default Controller.extend({
 
       if (area == '' || area == undefined
       || descripcion == '' || descripcion == undefined) {
-        this.get('flashMessages').warning('Completa todos los campos', {
+        this.get('flashMessages').warning('Hay campos obligatorios que no se han llenado. Intentelo de nuevo', {
           timeout: 10000,
         });
       } else {
         if (/^[0-9]+$/.test(area)) {
-          const propiedad = this.model;
+          const propiedad = this.get('model');
           const nuevoLote = this.store.createRecord('lote', {
-            area: this.area,
-            descripcion: this.descripcion,
+            area: area,
+            descripcion: descripcion,
           });
           propiedad.get('lotes').addObject(nuevoLote);
           nuevoLote.save().then(function(){

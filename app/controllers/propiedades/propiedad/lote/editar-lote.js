@@ -9,7 +9,7 @@ export default Controller.extend({
       const descripcion = this.get('descripcion');
       const id = this.get('model.id');
       if(area == '' || area == undefined || descripcion == '' || descripcion == undefined){
-        this.get('flashMessages').warning('Completa todos los campos', {
+        this.get('flashMessages').warning('Hay campos obligatorios que no se han llenado. Intentelo de nuevo', {
           timeout: 10000,
         });
       }else{

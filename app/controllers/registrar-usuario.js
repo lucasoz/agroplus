@@ -21,7 +21,7 @@ export default Controller.extend({
       || telefono == '' || telefono == undefined
       || correo == '' || correo == undefined
       || contrasena == '' || contrasena == undefined){
-        this.get('flashMessages').warning('Ingrese todos los datos', {
+        this.get('flashMessages').warning('Hay campos obligatorios que no se han llenado. Intentelo de nuevo', {
           timeout: 10000,
         });
       }else{
