@@ -21,6 +21,12 @@ Router.map(function() {
       this.route('lotes');
     });
   });
+  this.route('contactos', function() {
+    this.route('contacto',{ path: ':id2'}, function() {
+      this.route('editar-contacto');
+    });
+    this.route('agregar-contacto');
+  });
 });
 
 export default Router;
