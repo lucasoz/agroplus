@@ -1,0 +1,64 @@
+{{#link-to 'proyectos' class='btn btn-default'}}
+  Regresar
+{{/link-to}}
+<h1>Detalles de proyecto</h1>
+<table class="table">
+  <thead>
+    <tr>
+    <th>Nombre</th>
+    <th>Fecha de Inicio</th>
+    <th>Fecha Fin</th>
+    <th>Tipo de proyecto</th>
+    <th>descripcion</th>
+    <th>Producto de Cosecha</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <td>{{model.nombre}}</td>
+    <td>{{model.fechaInicio}}</td>
+    <td>{{model.fechaFin}}</td>
+    <td>{{model.tipoProyecto}}</td>
+    <td>{{model.descripcion}}</td>
+    <td>{{model.productoCosecha}}</td>
+    </tr>
+  </tbody>
+</table>
+
+{{#each flashMessages.queue as |flash|}}
+  {{#flash-message flash=flash as |component flash|}}
+    <b>{{component.flashType}}!</b>
+    {{flash.message}}
+  {{/flash-message}}
+{{/each}}
+
+{{#link-to 'proyectos.proyecto.agregar-actividad' class='btn btn-success'}} Agregar Actividad {{/link-to}}
+<h1>Actividades</h1>
+<table class="table">
+  <thead>
+    <tr>
+    <th>Nombre</th>
+    <th>Descripción</th>
+    <th>Costo</th>
+    <th>fecha</th>
+    <th>Tipo de Actividad</th>
+    <th>Opciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each model.actividades as |actividad|}}
+      <tr>
+          // Revisar 
+      <td>{{actividad.nombre}}</td>
+      <td>{{actividad.descripcion}}</td>
+      <td>{{actividad.costo}}</td>
+      <td>{{actividad.fecha}}</td>}
+      <td>{{actividad.tipo}}</td>
+      <td><button type="button" name="button" {{action 'delete' actividad.id}} class='btn btn-danger'>Eliminar</button>
+        {{#link-to 'proyectos.proyecto.actividad.editar-actividad' model.id actividad.id class='btn btn-primary'}}Editar{{/link-to}}</td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>
+
+{{outlet}}

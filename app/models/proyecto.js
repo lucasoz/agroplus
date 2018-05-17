@@ -5,7 +5,7 @@ export default DS.Model.extend({
   nombre: DS.attr('string'),
   fechaInicio: DS.attr('date'),
   fechaFin: DS.attr('date'),
-  tipo: DS.attr('string'),
+  tipoProyecto: DS.attr('string'),
   descripcion: DS.attr('string'),
   productoCosecha: DS.attr('string'),
   //Relaciones

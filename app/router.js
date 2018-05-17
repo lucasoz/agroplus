@@ -21,6 +21,12 @@ Router.map(function() {
       this.route('lotes');
     });
   });
+  this.route('proyectos', function() {
+    this.route('proyecto', {path: ':id4'},function() {
+      this.route('editar-proyecto');
+    });
+    this.route('agregar-proyecto');
+  });
 });
 
 export default Router;
