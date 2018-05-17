@@ -22,7 +22,7 @@
         <td>{{#link-to 'contactos.contacto' contacto.id}} {{contacto.nombre}} {{/link-to}}</td>
         <td>
           {{#link-to 'contactos.contacto.editar-contacto' contacto.id class='btn btn-primary'}}Editar{{/link-to}}
-          <button type="button" name="button" {{action 'delete' contacto.id}} class='btn btn-danger'>Eliminar</button>
+          <button type="button" name="button" {{action 'eliminarContacto' contacto}} class='btn btn-danger'>Eliminar</button>
         </td>
       </tr>
     {{/each}}

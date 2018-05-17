@@ -20,7 +20,12 @@
   <br>
   <div class="input-group">
     <span class="input-group-addon" id="basic-addon1">Tipo de contacto</span>
-    {{input type="text" value=tipoContacto class="form-control" placeholder="Cliente" aria-describedby="basic-addon1"}}
+    <select class="form-control" id="tipoContacto">
+      <option></option>
+      <option value="Cliente">Cliente</option>
+      <option value="Proveedor">Proveedor</option>
+      <option value="Empleado">Empleado</option>
+    </select>
   </div>
   <br>
   <div class="input-group">
