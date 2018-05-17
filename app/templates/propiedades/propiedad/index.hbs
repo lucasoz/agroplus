@@ -33,25 +33,31 @@
 {{/each}}
 
 {{#link-to 'propiedades.propiedad.agregar-lote' class='btn btn-success'}} Agregar lote {{/link-to}}
-<h1>Lotes</h1>
-<table class="table">
-  <thead>
-    <tr>
-    <th>Area</th>
-    <th>Descripción</th>
-    <th>Opciones</th>
-    </tr>
-  </thead>
-  <tbody>
-    {{#each model.lotes as |lote|}}
+
+{{#if model.lotes}}
+  <h1>Lotes</h1>
+  <table class="table">
+    <thead>
       <tr>
-      <td>{{lote.area}}</td>
-      <td>{{lote.descripcion}}</td>
-      <td><button type="button" name="button" {{action 'delete' lote.id}} class='btn btn-danger'>Eliminar</button>
-        {{#link-to 'propiedades.propiedad.lote.editar-lote' model.id lote.id class='btn btn-primary'}}Editar{{/link-to}}</td>
+      <th>Area</th>
+      <th>Descripción</th>
+      <th>Opciones</th>
       </tr>
-    {{/each}}
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      {{#each model.lotes as |lote|}}
+        <tr>
+        <td>{{lote.area}}</td>
+        <td>{{lote.descripcion}}</td>
+        <td><button type="button" name="button" {{action 'delete' lote.id}} class='btn btn-danger'>Eliminar</button>
+          {{#link-to 'propiedades.propiedad.lote.editar-lote' model.id lote.id class='btn btn-primary'}}Editar{{/link-to}}</td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+{{else}}
+  <h2>Esta propiedad no tiene lotes registrados</h2>
+{{/if}}
+
 
 {{outlet}}
