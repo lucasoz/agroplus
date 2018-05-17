@@ -26,6 +26,12 @@ Router.map(function() {
       this.route('editar-proyecto');
     });
     this.route('agregar-proyecto');
+  }); 
+  this.route('contactos', function() {
+    this.route('contacto',{ path: ':id2'}, function() {
+      this.route('editar-contacto');
+    });
+    this.route('agregar-contacto');
   });
 });
 

@@ -1,0 +1,34 @@
+<div class='page-header form-signin '>
+    <h1>Editar contacto</h1>
+</div>
+<div class="form-signin">
+  {{#each flashMessages.queue as |flash|}}
+    {{#flash-message flash=flash as |component flash|}}
+      <b>{{component.flashType}}!</b>
+      {{flash.message}}
+    {{/flash-message}}
+  {{/each}}
+  <div class="input-group">
+    <span class="input-group-addon" id="basic-addon1">Tipo de contacto</span>
+    <select class="form-control" id="tipoContacto">
+      <option></option>
+      <option value="Cliente">Cliente</option>
+      <option value="Proveedor">Proveedor</option>
+      <option value="Empleado">Empleado</option>
+    </select>
+  </div>
+  <br>
+  <div class="input-group">
+    <span class="input-group-addon" id="basic-addon1">Telefono</span>
+    {{input type="text" value=telefono class="form-control" placeholder="235675" aria-describedby="basic-addon1"}}
+  </div>
+  <br>
+  <span><strong>Nombre:</strong> {{model.nombre}}</span><br>
+  <span><strong>Apellidos:</strong> {{model.apellido}}</span><br>
+  <br>
+  <button type="button"  class='btn btn-lg btn-success btn-block' {{action 'editarContacto'}}>Actualizar contacto</button>
+  {{#link-to 'contactos' class='btn btn-lg btn-danger btn-block'}}
+    Cancelar
+  {{/link-to}}
+</div>
+{{outlet}}
