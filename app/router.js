@@ -22,11 +22,11 @@ Router.map(function() {
     });
   });
   this.route('proyectos', function() {
-    this.route('proyecto', {path: ':id4'},function() {
+    this.route('proyecto', {path: ':id3'},function() {
       this.route('editar-proyecto');
     });
     this.route('agregar-proyecto');
-  }); 
+  });
   this.route('contactos', function() {
     this.route('contacto',{ path: ':id2'}, function() {
       this.route('editar-contacto');

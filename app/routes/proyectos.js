@@ -9,14 +9,8 @@ export default Route.extend({
         }else{
           Usuario = this.modelFor('application');
         }
-        if(Usuario !=null){  
-
-
-          ////ACA ESTA EL ERROR//////
-
-
-          
-          return Usuario.get('propiedades');
+        if(Usuario !=null){
+          return Usuario.get('proyectos');
         }else {
           this.transitionTo('ingresar');
         }

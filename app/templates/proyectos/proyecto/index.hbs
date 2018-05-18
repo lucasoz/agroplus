@@ -32,7 +32,7 @@
   {{/flash-message}}
 {{/each}}
 
-{{#link-to 'proyectos.proyecto.agregar-actividad' class='btn btn-success'}} Agregar Actividad {{/link-to}}
+
 <h1>Actividades</h1>
 <table class="table">
   <thead>
@@ -48,14 +48,14 @@
   <tbody>
     {{#each model.actividades as |actividad|}}
       <tr>
-          // Revisar 
+          // Revisar
       <td>{{actividad.nombre}}</td>
       <td>{{actividad.descripcion}}</td>
       <td>{{actividad.costo}}</td>
       <td>{{actividad.fecha}}</td>}
       <td>{{actividad.tipo}}</td>
-      <td><button type="button" name="button" {{action 'delete' actividad.id}} class='btn btn-danger'>Eliminar</button>
-        {{#link-to 'proyectos.proyecto.actividad.editar-actividad' model.id actividad.id class='btn btn-primary'}}Editar{{/link-to}}</td>
+      <td><button type="button" name="button" {{action 'delete' actividad}} class='btn btn-danger'>Eliminar</button>
+        </td>
       </tr>
     {{/each}}
   </tbody>

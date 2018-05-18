@@ -5,7 +5,7 @@ export default Controller.extend({
   flashMessages: inject(),
   actions:{
     agregarProyecto(){
-        
+
         //definición de las variables
         const nombreProyecto = this.get('nombreProyecto');
         const fechaInicio = this.get('fechaInicio');
@@ -26,7 +26,7 @@ export default Controller.extend({
             timeout: 10000,
             });
         }else{
-            //Validación de que el nombre del proyecto sean solo letras            
+            //Validación de que el nombre del proyecto sean solo letras
             if(/^[A-Za-zÀ-ÿ\u00f1\u00d1 ]+$/.test(nombreProyecto)){
                 //Validacion de la fecha
                 //if(/^\d{4}([\-/.])(0?[1-9]|1[1-2])\1(3[01]|[12][0-9]|0?[1-9])$/.test(fechaInicio)){
@@ -43,7 +43,7 @@ export default Controller.extend({
                     });
                     usuario.get('proyectos').addObject(nuevoProyecto);
                     nuevoProyecto.save().then(function(){
-                    return usuario.save();
+                      return usuario.save();
                     });
                     this.set('nombreProyecto', '');
                     this.set('fechaInicio', '');
@@ -58,14 +58,14 @@ export default Controller.extend({
                 /*}else{
                     this.get('flashMessages').warning('Fecha de Inicio no valida, Fomato DD-MM-AA', {
                         timeout: 10000,
-                      }); 
-                } */  
+                      });
+                } */
             }else{
                 this.get('flashMessages').warning('Nombre no valido, solo letras', {
                   timeout: 10000,
                 });
-                } 
-            }    
+                }
+            }
      }
-    } 
+    }
 });
