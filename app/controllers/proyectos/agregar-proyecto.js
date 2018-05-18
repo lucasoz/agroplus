@@ -10,10 +10,10 @@ export default Controller.extend({
         const nombreProyecto = this.get('nombreProyecto');
         const fechaInicio = this.get('fechaInicio');
         const fechaFin = this.get('fechaFin');
-        const tipoProyecto = this.get('tipoProyecto');
+        const tipoProyecto = document.getElementById("tipoProyecto").value;
         const descripcion = this.get('descripcion');
         const productoCosecha = this.get('productoCosecha');
-
+        //Verificaciones:
         //Verificación que los campos esten llenos
         if (nombreProyecto == '' || nombreProyecto == undefined ||
         fechaInicio == '' || fechaInicio == undefined ||
