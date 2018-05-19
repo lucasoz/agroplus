@@ -6,9 +6,8 @@ export default Controller.extend({
   actions:{
     setEleccionPropiedad(idPropiedad) {
       const self = this;
-      console.log(idPropiedad);
       this.set('selectedOption', idPropiedad);
-      const propiedad = this.get('store').findRecord('propiedad', idPropiedad).then((propiedad)=>{
+      this.get('store').findRecord('propiedad', idPropiedad).then((propiedad)=>{
         propiedad.get('lotes').then((lotes1)=>{
           self.set('lotes',lotes1);
         });
@@ -43,7 +42,6 @@ export default Controller.extend({
                 //Validacion de la fecha
                 //if(/^\d{4}([\-/.])(0?[1-9]|1[1-2])\1(3[01]|[12][0-9]|0?[1-9])$/.test(fechaInicio)){
                 //fin de validacion
-                    console.log(lote.get('proyectos'));
                     var usuario = this.model.Usuario;
                     var nuevoProyecto = this.store.createRecord('proyecto',{
                       nombre: nombreProyecto,
