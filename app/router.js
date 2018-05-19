@@ -24,6 +24,7 @@ Router.map(function() {
   this.route('proyectos', function() {
     this.route('proyecto', {path: ':id3'},function() {
       this.route('editar-proyecto');
+      this.route('agregar-actividad');
     });
     this.route('agregar-proyecto');
   });

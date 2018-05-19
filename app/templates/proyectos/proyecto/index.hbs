@@ -1,4 +1,4 @@
-{{#link-to 'proyectos' class='btn btn-default'}}
+{{#link-to 'proyectos.index' class='btn btn-default'}}
   Regresar
 {{/link-to}}
 <h1>Detalles de proyecto</h1>
@@ -7,20 +7,18 @@
     <tr>
     <th>Nombre</th>
     <th>Fecha de Inicio</th>
-    <th>Fecha Fin</th>
     <th>Tipo de proyecto</th>
-    <th>descripcion</th>
+    <th>Descripción</th>
     <th>Producto de Cosecha</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-    <td>{{model.nombre}}</td>
-    <td>{{model.fechaInicio}}</td>
-    <td>{{model.fechaFin}}</td>
-    <td>{{model.tipoProyecto}}</td>
-    <td>{{model.descripcion}}</td>
-    <td>{{model.productoCosecha}}</td>
+    <td>{{model.proyecto.nombre}}</td>
+    <td>{{model.dia}} / {{model.mes}} / {{model.ano}}</td>
+    <td>{{model.proyecto.tipoProyecto}}</td>
+    <td>{{model.proyecto.descripcion}}</td>
+    <td>{{model.proyecto.productoCosecha}}</td>
     </tr>
   </tbody>
 </table>
@@ -32,8 +30,11 @@
   {{/flash-message}}
 {{/each}}
 
+{{#link-to 'proyectos.proyecto.agregar-actividad' class='btn btn-success'}} Agregar actividad {{/link-to}}
 
+{{#if model.proyecto.lotes}}
 <h1>Actividades</h1>
+
 <table class="table">
   <thead>
     <tr>
@@ -46,7 +47,7 @@
     </tr>
   </thead>
   <tbody>
-    {{#each model.actividades as |actividad|}}
+    {{#each model.proyecto.actividades as |actividad|}}
       <tr>
           // Revisar
       <td>{{actividad.nombre}}</td>
@@ -60,5 +61,7 @@
     {{/each}}
   </tbody>
 </table>
-
+{{else}}
+  <h2>Este proyecto no tiene actividades registrados</h2>
+{{/if}}
 {{outlet}}

@@ -16,17 +16,8 @@
     {{input type="text" value=nombreProyecto class="form-control" placeholder="La María" aria-describedby="basic-addon1"}}
   </div><br>
 
-  <!--Editar fecha inicio del Proyecto-->
-  <div class = "input-group">
-    <span class="input-group-addon" id="basic-addon1">Fecha de Inicio</span>
-    {{input type="date" value=fechaInicio class="form-control"  aria-describedby="basic-addon1"}}
-  </div><br>
 
-  <!--Editar fecha final del Proyecto-->
-   <div class = "input-group">
-    <span class="input-group-addon" id="basic-addon1">Fecha Final</span>
-    {{input type="date" value=fechaFin class="form-control"  aria-describedby="basic-addon1"}}
-  </div><br>
+
   <!--Editar tipo de Proyecto-->
   <div class = "input-group">
     <span class="input-group-addon" id="basic-addon1">Tipo de proyecto</span>
@@ -39,21 +30,15 @@
   </div><br>
 
   <!--Editar descripcion del Proyecto-->
-  <div class = "input-group">
-    <span class="input-group-addon" id="basic-addon1">Descripción</span>
-    {{input type="text" value=descripcion class="form-control" placeholder="Ingrese la descripcion" aria-describedby="basic-addon1"}}
-  </div><br>
+  <div class="input-group">
+    <span class="input-group-addon" id="basic-addon1">Descripcion</span>
+    {{textarea value=descripcion class='form-control' placeholder='Realiza una descripcion del estado en el que encontraste la bicicleta, el lugar y la hora.' aria-describedby="basic-addon1"}}
+  </div>
 
-  <!--Editar fecha final del Proyecto-->
-  <div class = "input-group">
-    <span class="input-group-addon" id="basic-addon1">Producto a Cosechar</span>
-    {{input type="text" value=productoCosecha class="form-control" placeholder="Ingrese la descripcion" aria-describedby="basic-addon1"}}
-  </div><br>
-
-  <!--Boton para  editar los campos anteriores-->  
+  <!--Boton para  editar los campos anteriores-->
   <button type="button"  class='btn btn-lg btn-success btn-block' {{action 'editarProyecto'}}>Editar proyecto</button>
-  
-  <!--Boton para regresar a los Proyectos-->  
+
+  <!--Boton para regresar a los Proyectos-->
   {{#link-to 'proyectos.index' class='btn btn-lg btn-danger btn-block'}}
     Cancelar
   {{/link-to}}

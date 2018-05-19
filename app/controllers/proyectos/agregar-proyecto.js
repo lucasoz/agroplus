@@ -4,20 +4,32 @@ import {inject} from '@ember/service';
 export default Controller.extend({
   flashMessages: inject(),
   actions:{
+    setEleccionPropiedad(idPropiedad) {
+      const self = this;
+      console.log(idPropiedad);
+      this.set('selectedOption', idPropiedad);
+      const propiedad = this.get('store').findRecord('propiedad', idPropiedad).then((propiedad)=>{
+        propiedad.get('lotes').then((lotes1)=>{
+          self.set('lotes',lotes1);
+        });
+      });
+    },
+    setEleccionLote(idLote) {
+      this.set('idLote',idLote);
+    },
     agregarProyecto(){
 
         //definición de las variables
         const nombreProyecto = this.get('nombreProyecto');
-        const fechaInicio = this.get('fechaInicio');
-        const fechaFin = this.get('fechaFin');
+        const fechaInicio = new Date();
         const tipoProyecto = document.getElementById("tipoProyecto").value;
         const descripcion = this.get('descripcion');
         const productoCosecha = this.get('productoCosecha');
+        const lote = this.get('store').findRecord('lote', this.get('idLote'));
+
         //Verificaciones:
         //Verificación que los campos esten llenos
         if (nombreProyecto == '' || nombreProyecto == undefined ||
-        fechaInicio == '' || fechaInicio == undefined ||
-        fechaFin == '' || fechaFin == undefined ||
         tipoProyecto == '' || tipoProyecto == undefined ||
         descripcion == '' || descripcion == undefined ||
         productoCosecha == '' || productoCosecha == undefined){
@@ -31,20 +43,26 @@ export default Controller.extend({
                 //Validacion de la fecha
                 //if(/^\d{4}([\-/.])(0?[1-9]|1[1-2])\1(3[01]|[12][0-9]|0?[1-9])$/.test(fechaInicio)){
                 //fin de validacion
-                    var usuario = this.model;
+                    console.log(lote.get('proyectos'));
+                    var usuario = this.model.Usuario;
                     var nuevoProyecto = this.store.createRecord('proyecto',{
-                    nombre: nombreProyecto,
-                    fechaInicio: fechaInicio,
-                    fechaFin: fechaFin,
-                    tipoProyecto: tipoProyecto ,
-                    descripcion: descripcion,
-                    productoCosecha: productoCosecha,
-                    usuario: usuario
+                      nombre: nombreProyecto,
+                      fechaInicio: fechaInicio,
+                      tipoProyecto: tipoProyecto ,
+                      descripcion: descripcion,
+                      productoCosecha: productoCosecha,
+                      usuario: usuario,
+                      lote: lote,
                     });
                     usuario.get('proyectos').addObject(nuevoProyecto);
                     nuevoProyecto.save().then(function(){
                       return usuario.save();
                     });
+                    lote.get('proyectos').addObject(nuevoProyecto);
+                    nuevoProyecto.save().then(function(){
+                      return lote.save();
+                    });
+
                     this.set('nombreProyecto', '');
                     this.set('fechaInicio', '');
                     this.set('fechaFin', '');

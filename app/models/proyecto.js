@@ -10,5 +10,6 @@ export default DS.Model.extend({
   productoCosecha: DS.attr('string'),
   //Relaciones
   actividades: DS.hasMany('actividad', { async: true }),
+  lote: DS.belongsTo('lote'),
   usuario: DS.belongsTo('usuario'),
 });

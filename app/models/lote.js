@@ -6,4 +6,5 @@ export default DS.Model.extend({
   descripcion: DS.attr('string'),
   //Relaciones
   propiedad: DS.belongsTo('propiedad'),
+  proyectos: DS.hasMany('proyecto', { async: true }),
 });

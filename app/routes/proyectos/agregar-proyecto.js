@@ -8,6 +8,8 @@ export default Route.extend({
         }else{
           Usuario = this.modelFor('application');
         }
-        return Usuario;
+        const propiedades = Usuario.get('propiedades');
+        return {Usuario, propiedades};
+
       }
 });
