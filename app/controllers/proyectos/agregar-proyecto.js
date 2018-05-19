@@ -24,7 +24,9 @@ export default Controller.extend({
         const tipoProyecto = document.getElementById("tipoProyecto").value;
         const descripcion = this.get('descripcion');
         const productoCosecha = this.get('productoCosecha');
-        const lote = this.get('store').findRecord('lote', this.get('idLote'));
+        //const id = this.get('idLote');
+
+        //console.log(lote);
 
         //Verificaciones:
         //Verificación que los campos esten llenos
@@ -50,17 +52,24 @@ export default Controller.extend({
                       descripcion: descripcion,
                       productoCosecha: productoCosecha,
                       usuario: usuario,
-                      lote: lote,
+
                     });
-                    console.log(this.store.findRecord('lote','-LCqAjSJeo9a_LR6taCj').get('proyectos'));
+                    //console.log(this.store.findRecord('lote','-LCqAjSJeo9a_LR6taCj').get('proyectos'));
+                    //console.log(lote);
                     usuario.get('proyectos').addObject(nuevoProyecto);
+                    /*
                     nuevoProyecto.save().then(function(){
                       return usuario.save();
                     });
-                    lote.get('proyectos').addObject(nuevoProyecto);
-                    nuevoProyecto.save().then(function(){
-                      return lote.save();
+                    */
+                    this.get('store').findRecord('lote', this.get('idLote')).then((lote)=>{
+                      lote.get('proyectos').addObject(nuevoProyecto);
+                      nuevoProyecto.save().then(function(){
+                        lote.save();
+                        usuario.save();
+                      });
                     });
+
 
                     this.set('nombreProyecto', '');
                     this.set('fechaInicio', '');
