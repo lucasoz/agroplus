@@ -27,7 +27,7 @@
     <span class="input-group-addon" id="basic-addon1">Propiedad</span>
     <select class="form-control" onchange={{action "setEleccionPropiedad" value="target.value"}}>
       {{#if model.propiedades}}
-        <option disabled selected></option>
+        <option disabled selected>Selecciona una propiedad</option>
         {{#each model.propiedades as |propiedad|}}
           <option value={{propiedad.id}}>{{propiedad.nombre}}</option>
         {{/each}}
@@ -42,10 +42,14 @@
   <div class="input-group">
     <span class="input-group-addon" id="basic-addon1">Lote</span>
     <select class="form-control" onchange={{action "setEleccionLote" value="target.value"}}>
-      <option disabled selected></option>
-      {{#each lotes as |lote|}}
-        <option value={{lote.id}}>{{lote.area}}-{{lote.descripcion}}</option>
-      {{/each}}
+      {{#if lotes}}
+        <option disabled selected>Selecciona un lote</option>
+        {{#each lotes as |lote|}}
+          <option value={{lote.id}}>{{lote.area}}-{{lote.descripcion}}</option>
+        {{/each}}
+      {{else}}
+        <option disabled selected>Esta propiedad no tiene lotes registrados</option>
+      {{/if}}
     </select>
   </div>
   <br>

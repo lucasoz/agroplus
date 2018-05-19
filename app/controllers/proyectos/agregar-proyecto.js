@@ -52,6 +52,7 @@ export default Controller.extend({
                       usuario: usuario,
                       lote: lote,
                     });
+                    console.log(this.store.findRecord('lote','-LCqAjSJeo9a_LR6taCj').get('proyectos'));
                     usuario.get('proyectos').addObject(nuevoProyecto);
                     nuevoProyecto.save().then(function(){
                       return usuario.save();
