@@ -3,13 +3,13 @@ import Route from '@ember/routing/route';
 export default Route.extend({
   model(){
     let proyectos = this.modelFor('proyectos');
-    let proyectosActivos = [];
+    let proyectosFinalizados = [];
     proyectos.forEach((proyecto)=>{
 
-      if (!proyecto.get('finalizado')) {
-        proyectosActivos.push(proyecto);
+      if (proyecto.get('finalizado')) {
+        proyectosFinalizados.push(proyecto);
       }
     });
-    return proyectosActivos;
+    return proyectosFinalizados;
   }
 });

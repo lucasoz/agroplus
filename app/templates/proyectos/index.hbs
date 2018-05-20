@@ -5,12 +5,13 @@
 {{/each}}
 
 {{#link-to 'proyectos.agregar-proyecto' class='btn btn-success'}} Agregar proyecto {{/link-to}}
+{{#link-to 'proyectos.historial-proyectos' class='btn btn-warning'}} Historial de proyectos{{/link-to}}
 {{#link-to 'index' class='btn btn-default'}}
   Regresar
 {{/link-to}}
 
 {{#if model}}
-<h1>Proyectos</h1>
+<h1>Proyectos Activos</h1>
 <table class="table">
   <thead>
     <tr>
@@ -20,11 +21,15 @@
   </thead>
   <tbody>
     {{#each model as |proyecto|}}
-      <tr>
-      <td>{{#link-to 'proyectos.proyecto' proyecto.id}} {{proyecto.nombre}} {{/link-to}}</td>
-      <!-- Falta organizar proyecto.id de editar proyectos-->
-      <td>{{#link-to 'proyectos.proyecto.editar-proyecto' proyecto.id class='btn btn-primary'}}Editar{{/link-to}}</td>
-      </tr>
+      {{#if proyecto.finalizado}}
+      {{else}}
+        <tr>
+        <td>{{#link-to 'proyectos.proyecto' proyecto.id}} {{proyecto.nombre}} {{/link-to}}</td>
+        <!-- Falta organizar proyecto.id de editar proyectos-->
+        <td>{{#link-to 'proyectos.proyecto.editar-proyecto' proyecto.id class='btn btn-primary'}}Editar{{/link-to}}</td>
+        </tr>
+      {{/if}}
+
     {{/each}}
   </tbody>
 </table>

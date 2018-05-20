@@ -31,6 +31,7 @@ Router.map(function() {
       });
     });
     this.route('agregar-proyecto');
+    this.route('historial-proyectos');
   });
   this.route('contactos', function() {
     this.route('contacto',{ path: ':id2'}, function() {

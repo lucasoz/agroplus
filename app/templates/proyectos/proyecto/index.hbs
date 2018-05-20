@@ -1,3 +1,4 @@
+<button type="button" {{action 'finalizarProyecto'}} class='btn btn-warning'>Finalizar proyecto</button>
 {{#link-to 'proyectos.index' class='btn btn-default'}}
   Regresar
 {{/link-to}}
@@ -15,6 +16,7 @@
     <th>Tipo de proyecto</th>
     <th>Descripción</th>
     <th>Producto de Cosecha</th>
+
     </tr>
   </thead>
   <tbody>
@@ -24,6 +26,7 @@
     <td>{{model.proyecto.tipoProyecto}}</td>
     <td>{{model.proyecto.descripcion}}</td>
     <td>{{model.proyecto.productoCosecha}}</td>
+
     </tr>
   </tbody>
 </table>
@@ -48,7 +51,9 @@
     <th>Costo</th>
     <th>fecha</th>
     <th>Tipo de Actividad</th>
+    <th>Responsable</th>
     <th>Opciones</th>
+
     </tr>
   </thead>
   <tbody>
@@ -59,6 +64,7 @@
       <td>{{actividad.costo}}</td>
       <td>{{actividad.fecha}}</td>
       <td>{{actividad.tipo}}</td>
+      <td>{{#link-to 'contactos.contacto' actividad.contacto.id}} {{actividad.contacto.nombre}}-{{actividad.contacto.tipoContacto}} {{/link-to}}</td>
       <td>{{#link-to 'proyectos.proyecto.actividad.editar-actividad' model.proyecto.id actividad.id class='btn btn-primary'}}Editar{{/link-to}}</td>
       </tr>
     {{/each}}

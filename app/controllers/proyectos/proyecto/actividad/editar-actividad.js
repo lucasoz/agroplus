@@ -20,7 +20,7 @@ export default Controller.extend({
 
           this.set('nombreActividad', '');
           this.set('descripcion', '');
-          this.transitionToRoute('proyectos.proyecto');
+          this.transitionToRoute('proyectos.proyecto.index');
           this.get('flashMessages').success('Actividad actualizada correctamente!', {
             timeout: 10000,
           });

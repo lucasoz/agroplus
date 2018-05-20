@@ -42,7 +42,19 @@ export default Controller.extend({
                       telefono: telefono,
                       correo: correo,
                     });
-                    nuevoUsuario.save();
+
+                    let nuevoContacto = this.get('store').createRecord('contacto',{
+                      nombre: nombre,
+                      apellido: apellido,
+                      tipoContacto: 'Popietario',
+                      telefono: telefono,
+                    });
+
+                    nuevoUsuario.get('contactos').addObject(nuevoContacto);
+                    nuevoContacto.save().then(function(){
+                      return nuevoUsuario.save();
+                    });
+
                     this.transitionToRoute('index');
                     ///limpiar compos
                     this.set('nombre', '');
