@@ -27,6 +27,7 @@ Router.map(function() {
     });
     this.route('agregar-contacto');
   });
+  this.route('editar-usuario');
 });
 
 export default Router;
