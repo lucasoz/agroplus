@@ -7,6 +7,14 @@
   margin: auto;
 }
 
+.positivo {
+  color: #2ECC71;
+}
+
+.negativo {
+  color: #F42F1A;
+}
+
 .form-label-group {
   position: relative;
   margin-bottom: 1rem;

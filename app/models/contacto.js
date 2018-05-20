@@ -7,6 +7,6 @@ export default DS.Model.extend({
   tipoContacto: DS.attr('string'),
   telefono: DS.attr('number'),
   //Relaciones
-  actividad: DS.belongsTo('actividad'),
+  actividades: DS.hasMany('actividad', { async: true }),
   usuario: DS.belongsTo('usuario'),
 });
