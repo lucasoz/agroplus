@@ -59,8 +59,7 @@
       <td>{{actividad.costo}}</td>
       <td>{{actividad.fecha}}</td>
       <td>{{actividad.tipo}}</td>
-      <td><button type="button" name="button" {{action 'delete' actividad}} class='btn btn-danger'>Eliminar</button>
-        </td>
+      <td>{{#link-to 'proyectos.proyecto.actividad.editar-actividad' model.proyecto.id actividad.id class='btn btn-primary'}}Editar{{/link-to}}</td>
       </tr>
     {{/each}}
   </tbody>

@@ -54,6 +54,7 @@ export default Controller.extend({
                       usuario: usuario,
                       balance: 0,
                       positivo: false,
+                      finalizado: false,
                     });
                     //console.log(this.store.findRecord('lote','-LCqAjSJeo9a_LR6taCj').get('proyectos'));
                     //console.log(lote);
