@@ -21,6 +21,13 @@ Router.map(function() {
       this.route('lotes');
     });
   });
+  this.route('proyectos', function() {
+    this.route('proyecto', {path: ':id3'},function() {
+      this.route('editar-proyecto');
+      this.route('agregar-actividad');
+    });
+    this.route('agregar-proyecto');
+  });
   this.route('contactos', function() {
     this.route('contacto',{ path: ':id2'}, function() {
       this.route('editar-contacto');

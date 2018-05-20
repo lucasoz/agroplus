@@ -1,0 +1,71 @@
+<div class='page-header form-signin '>
+    <h1>Agregar Proyecto</h1>
+</div>
+<div class="form-signin">
+  {{#each flashMessages.queue as |flash|}}
+    {{#flash-message flash=flash as |component flash|}}
+      {{flash.message}}
+    {{/flash-message}}
+  {{/each}}
+  <div class="input-group">
+    <span class="input-group-addon" id="basic-addon1">Nombre del Proyecto</span>
+    {{input type="text" value=nombreProyecto class="form-control" placeholder="Ingrese el nombre del Proyecto" aria-describedby="basic-addon1"}}
+  </div>
+  <br>
+  <div class="input-group">
+    <span class="input-group-addon" id="basic-addon1">Tipo de Proyecto</span>
+    <select class="form-control" id="tipoProyecto">
+      <option></option>
+      <option value="Agricola">Agricola</option>
+      <option value="Pesca">Pesca</option>
+      <option value="Ganaderia">Ganaderia</option>
+    </select>
+  </div>
+  <br>
+
+  <div class="input-group">
+    <span class="input-group-addon" id="basic-addon1">Propiedad</span>
+    <select class="form-control" onchange={{action "setEleccionPropiedad" value="target.value"}}>
+      {{#if model.propiedades}}
+        <option disabled selected>Selecciona una propiedad</option>
+        {{#each model.propiedades as |propiedad|}}
+          <option value={{propiedad.id}}>{{propiedad.nombre}}</option>
+        {{/each}}
+      {{else}}
+        <option disabled selected>Usted no tiene propiedades registradas</option>
+      {{/if}}
+
+
+    </select>
+  </div>
+  <br>
+  <div class="input-group">
+    <span class="input-group-addon" id="basic-addon1">Lote</span>
+    <select class="form-control" onchange={{action "setEleccionLote" value="target.value"}}>
+      {{#if lotes}}
+        <option disabled selected>Selecciona un lote</option>
+        {{#each lotes as |lote|}}
+          <option value={{lote.id}}>{{lote.area}}-{{lote.descripcion}}</option>
+        {{/each}}
+      {{else}}
+        <option disabled selected>Esta propiedad no tiene lotes registrados</option>
+      {{/if}}
+    </select>
+  </div>
+  <br>
+  <div class="input-group">
+    <span class="input-group-addon" id="basic-addon1">Descripcion</span>
+    {{textarea value=descripcion class='form-control' placeholder='Realiza una descripcion del estado en el que encontraste la bicicleta, el lugar y la hora.' aria-describedby="basic-addon1"}}
+  </div>
+  <br>
+  <div class="input-group">
+    <span class="input-group-addon" id="basic-addon1">Producto a cosechar</span>
+    {{input type="text" value=productoCosecha class="form-control" placeholder="Ingrese el producto a Cosechar" aria-describedby="basic-addon1"}}
+  </div>
+  <br>
+  <button type="button"  class='btn btn-lg btn-success btn-block' {{action 'agregarProyecto'}}>Agregar Proyecto</button>
+  {{#link-to 'proyectos.index' class='btn btn-lg btn-danger btn-block'}}
+    Cancelar
+  {{/link-to}}
+</div>
+{{outlet}}

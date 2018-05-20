@@ -2,11 +2,12 @@ import Controller from '@ember/controller';
 
 export default Controller.extend({
   actions : {
-    delete(id){
+    eliminarContacto(contacto){
       const respuesta = confirm("¿Estás seguro que quieres borrar este contacto?");
       if (respuesta) {
-        this.get('store').findRecord('contacto', id).then(function(contacto) {
-          contacto.destroyRecord();
+        contacto.destroyRecord();
+        this.get('flashMessages').success('El contacto fue eliminado exitosamente', {
+          timeout: 10000,
         });
       }
     },

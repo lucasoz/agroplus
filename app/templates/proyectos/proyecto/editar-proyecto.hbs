@@ -1,0 +1,47 @@
+
+<div class='page-header form-signin '>
+    <h1>Editar proyecto</h1>
+</div>
+<div class="form-signin">
+  {{#each flashMessages.queue as |flash|}}
+    {{#flash-message flash=flash as |component flash|}}
+      <b>{{component.flashType}}!</b>
+      {{flash.message}}
+    {{/flash-message}}
+  {{/each}}
+
+  <!--Editar nombre del Proyecto-->
+  <div class="input-group">
+    <span class="input-group-addon" id="basic-addon1">Nombre del proyecto</span>
+    {{input type="text" value=nombreProyecto class="form-control" placeholder="La María" aria-describedby="basic-addon1"}}
+  </div><br>
+
+
+
+  <!--Editar tipo de Proyecto-->
+  <div class = "input-group">
+    <span class="input-group-addon" id="basic-addon1">Tipo de proyecto</span>
+    <select class="form-control" id="tipoProyecto">
+      <option></option>
+      <option value="Agricola">Agricola</option>
+      <option value="Pesca">Pesca</option>
+      <option value="Ganaderia">Ganaderia</option>
+    </select>
+  </div><br>
+
+  <!--Editar descripcion del Proyecto-->
+  <div class="input-group">
+    <span class="input-group-addon" id="basic-addon1">Descripcion</span>
+    {{textarea value=descripcion class='form-control' placeholder='Realiza una descripcion del estado en el que encontraste la bicicleta, el lugar y la hora.' aria-describedby="basic-addon1"}}
+  </div>
+
+  <!--Boton para  editar los campos anteriores-->
+  <button type="button"  class='btn btn-lg btn-success btn-block' {{action 'editarProyecto'}}>Editar proyecto</button>
+
+  <!--Boton para regresar a los Proyectos-->
+  {{#link-to 'proyectos.index' class='btn btn-lg btn-danger btn-block'}}
+    Cancelar
+  {{/link-to}}
+
+</div>
+{{outlet}}
