@@ -45,26 +45,29 @@ export default Controller.extend({
                 //if(/^\d{4}([\-/.])(0?[1-9]|1[1-2])\1(3[01]|[12][0-9]|0?[1-9])$/.test(fechaInicio)){
                 //fin de validacion
                     var usuario = this.model.Usuario;
-                    var nuevoProyecto = this.store.createRecord('proyecto',{
-                      nombre: nombreProyecto,
-                      fechaInicio: fechaInicio,
-                      tipoProyecto: tipoProyecto ,
-                      descripcion: descripcion,
-                      productoCosecha: productoCosecha,
-                      usuario: usuario,
-                      balance: 0,
-                      positivo: false,
-                      finalizado: false,
-                    });
+
                     //console.log(this.store.findRecord('lote','-LCqAjSJeo9a_LR6taCj').get('proyectos'));
                     //console.log(lote);
-                    usuario.get('proyectos').addObject(nuevoProyecto);
+
                     /*
                     nuevoProyecto.save().then(function(){
                       return usuario.save();
                     });
                     */
                     this.get('store').findRecord('lote', this.get('idLote')).then((lote)=>{
+                      var nuevoProyecto = this.store.createRecord('proyecto',{
+                        nombre: nombreProyecto,
+                        fechaInicio: fechaInicio,
+                        tipoProyecto: tipoProyecto ,
+                        descripcion: descripcion,
+                        productoCosecha: productoCosecha,
+                        usuario: usuario,
+                        lote: lote,
+                        balance: 0,
+                        positivo: false,
+                        finalizado: false,
+                      });
+                      usuario.get('proyectos').addObject(nuevoProyecto);
                       lote.get('proyectos').addObject(nuevoProyecto);
                       nuevoProyecto.save().then(function(){
                         lote.save();

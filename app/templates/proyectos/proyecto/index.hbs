@@ -16,7 +16,7 @@
     <th>Tipo de proyecto</th>
     <th>Descripción</th>
     <th>Producto de Cosecha</th>
-
+    <th>Propiedad/lote</th>
     </tr>
   </thead>
   <tbody>
@@ -26,7 +26,7 @@
     <td>{{model.proyecto.tipoProyecto}}</td>
     <td>{{model.proyecto.descripcion}}</td>
     <td>{{model.proyecto.productoCosecha}}</td>
-
+    <td>{{model.proyecto.lote.propiedad.nombre}}/{{model.proyecto.lote.area}}-{{model.proyecto.lote.area}}</td>
     </tr>
   </tbody>
 </table>
