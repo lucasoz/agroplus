@@ -1,0 +1,50 @@
+
+
+<div class='page-header form-signin '>
+    <h1>Editar usuario </h1>
+</div>
+
+<div class="form-signin">
+  {{#each flashMessages.queue as |flash|}}
+    {{#flash-message flash=flash as |component flash|}}
+      <b>{{component.flashType}}!</b>
+      {{flash.message}}
+    {{/flash-message}}
+  {{/each}}
+</div>
+
+<div class="form-signin">
+  <div class="input-group">
+    <span class="input-group-addon" id="basic-addon1">Nombre</span>
+    {{input type="text" value=nombre class="form-control" placeholder="Nombre" aria-describedby="basic-addon1"}}
+  </div>
+<br>
+  <div class="input-group">
+    <span class="input-group-addon" id="basic-addon1">Apellido</span>
+    {{input type="text" value=apellido class="form-control" placeholder="Apellido" aria-describedby="basic-addon1"}}
+  </div>
+<br>
+  <div class="input-group">
+    <span class="input-group-addon" id="basic-addon1">Municipio</span>
+    {{input type="text" value=municipio class="form-control" placeholder="Municipio" aria-describedby="basic-addon1"}}
+  </div>
+<br>
+  <div class="input-group">
+    <span class="input-group-addon" id="basic-addon1">Departamento</span>
+    {{input type="text" value=departamento class="form-control" placeholder="Departamento" aria-describedby="basic-addon1"}}
+  </div>
+<br>
+  <div class="input-group">
+    <span class="input-group-addon" id="basic-addon1">Telefono</span>
+    {{input type="text" value=telefono class="form-control" placeholder="Telefono" aria-describedby="basic-addon1"}}
+  </div>
+<br>
+
+  <button type="button"  class='btn btn-lg btn-success btn-block' {{action 'editarUsuario'}}>Editar usuario</button>
+<br>
+  {{#link-to 'index' class='btn btn-lg btn-danger btn-block'}}
+    Cancelar
+  {{/link-to}}
+</div>
+
+{{outlet}}

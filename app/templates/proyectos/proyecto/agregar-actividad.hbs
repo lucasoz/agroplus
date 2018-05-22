@@ -1,1 +1,58 @@
+<div class='page-header form-signin '>
+    <h1>Agregar Actividad</h1>
+</div>
+
+<div class="form-signin">
+  {{#each flashMessages.queue as |flash|}}
+    {{#flash-message flash=flash as |component flash|}}
+      {{flash.message}}
+    {{/flash-message}}
+  {{/each}}
+  <div class="input-group">
+    <span class="input-group-addon" id="basic-addon1">Nombre de la actividad</span>
+    {{input type="text" value=nombreActividad class="form-control" placeholder="Ej: Pago de empleado, compra de maquinaria, venta de producto" aria-describedby="basic-addon1"}}
+  </div>
+  <br>
+
+  <div class="input-group">
+    <span class="input-group-addon" id="basic-addon1">Descripción</span>
+    {{textarea value=descripcion class='form-control' placeholder='Realiza una corta descripción del proyecto.' aria-describedby="basic-addon1"}}
+  </div>
+  <br>
+
+  <div class="input-group">
+    <span class="input-group-addon" id="basic-addon1">Costo</span>
+    {{input type="number" value=costo class="form-control" placeholder="Ingrese el costo de la actividad" aria-describedby="basic-addon1"}}
+  </div>
+  <br>
+
+  <div class="input-group">
+    <span class="input-group-addon" id="basic-addon1">Tipo de Actividad</span>
+    <select class="form-control" id="tipoActividad">
+      <option disabled selected>Seleccione un tipo de actividad</option>
+      <option value="Ingreso">Ingreso</option>
+      <option value="Gasto">Gasto</option>
+    </select>
+  </div>
+  <br>
+  <div class="input-group">
+    <span class="input-group-addon" id="basic-addon1">Responsable/involucrado</span>
+    <select class="form-control" onchange={{action "setEleccionContacto" value="target.value"}}>
+      {{#if model.contactos}}
+        <option disabled selected>Selecciona un contacto</option>
+        {{#each model.contactos as |contacto|}}
+          <option value={{contacto.id}}>{{contacto.nombre}} {{contacto.apellido}} - {{contacto.tipoContacto}}</option>
+        {{/each}}
+      {{else}}
+        <option disabled selected>Usted no tiene contactos registrados</option>
+      {{/if}}
+    </select>
+  </div>
+  <br>
+
+  <button type="button"  class='btn btn-lg btn-success btn-block' {{action 'agregarActividad'}}>Agregar Actividad</button>
+  {{#link-to 'proyectos.proyecto.index' class='btn btn-lg btn-danger btn-block'}}
+    Cancelar
+  {{/link-to}}
+</div>
 {{outlet}}

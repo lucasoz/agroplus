@@ -1,0 +1,47 @@
+{{#each flashMessages.queue as |flash|}}
+  {{#flash-message flash=flash as |component flash|}}
+    {{flash.message}}
+  {{/flash-message}}
+{{/each}}
+
+{{#link-to 'proyectos.index' class='btn btn-default'}}
+  Regresar
+{{/link-to}}
+
+{{#if model}}
+<h1>Proyectos Finalizados</h1>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Fecha de Inicio</th>
+      <th>Fecha de Finalización</th>
+      <th>Tipo de proyecto</th>
+      <th>Descripción</th>
+      <th>Producto de Cosecha</th>
+      <th>Balance</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each model as |proyecto|}}
+      {{#if proyecto.finalizado}}
+      <tr>
+      <td>{{proyecto.nombre}}</td>
+      <td>{{proyecto.fechaInicio}}</td>
+      <td>{{proyecto.fechaFin}}</td>
+      <td>{{proyecto.tipoProyecto}}</td>
+      <td>{{proyecto.descripcion}}</td>
+      <td>{{proyecto.productoCosecha}}</td>
+      <td> <p class={{if proyecto.positivo 'positivo' 'negativo'}}>${{proyecto.balance}}</p> </td>
+      </tr>
+      {{else}}
+      {{/if}}
+
+    {{/each}}
+  </tbody>
+</table>
+{{else}}
+  <h2>Usted no tiene proyectos finalizados registrados</h2>
+{{/if}}
+
+{{outlet}}

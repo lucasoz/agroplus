@@ -8,6 +8,11 @@ export default Route.extend({
         }else{
           Usuario = this.modelFor('application');
         }
-        return Usuario.get('proyectos').findBy('id', id3);
+        const proyecto = Usuario.get('proyectos').findBy('id', id3);
+        const fechaInicio = proyecto.get('fechaInicio');
+        const dia = fechaInicio.getDate();
+        const mes = fechaInicio.getMonth() + 1;
+        const ano = fechaInicio.getFullYear();
+        return {proyecto,dia,mes,ano};
       }
 });
