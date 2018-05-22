@@ -32,6 +32,7 @@ export default Controller.extend({
                 //if(/^\d{4}([\-/.])(0?[1-9]|1[1-2])\1(3[01]|[12][0-9]|0?[1-9])$/.test(fechaInicio)){
                 //fin de validacion
                     var usuario = this.model;
+                    
                     var nuevoProyecto = this.store.createRecord('proyecto',{
                     nombre: nombreProyecto,
                     fechaInicio: fechaInicio,
