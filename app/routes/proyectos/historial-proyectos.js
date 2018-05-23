@@ -11,7 +11,7 @@ export default Route.extend({
         }
       });
       return proyectosFinalizados
-    };
+    }
     return proyectosFinalizados(proyectos);
   }
 });

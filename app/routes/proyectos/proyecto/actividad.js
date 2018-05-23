@@ -5,7 +5,6 @@ export default Route.extend({
     const proyecto = this.modelFor('proyectos.proyecto').proyecto;
     const actividades = proyecto.get('actividades');
     const actividad = actividades.findBy('id',id4);
-    console.log(actividad);
     return actividad;
   }
 });

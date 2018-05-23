@@ -4,6 +4,8 @@ import {inject} from '@ember/service';
 export default Controller.extend({
   flashMessages: inject(),
   actions:{
+
+    //Seleccion de la propiedad
     setEleccionPropiedad(idPropiedad) {
       const self = this;
       this.set('selectedOption', idPropiedad);
@@ -13,6 +15,8 @@ export default Controller.extend({
         });
       });
     },
+
+    //Seleccion de Lote
     setEleccionLote(idLote) {
       this.set('idLote',idLote);
     },
@@ -24,36 +28,26 @@ export default Controller.extend({
         const tipoProyecto = document.getElementById("tipoProyecto").value;
         const descripcion = this.get('descripcion');
         const productoCosecha = this.get('productoCosecha');
-        //const id = this.get('idLote');
+        //const propiedad = document.getElementById('propiedadesc').value;
+        //const lote = document.getElementById('loteesc').value;
 
-        //console.log(lote);
 
         //Verificaciones:
         //Verificación que los campos esten llenos
         if (nombreProyecto == '' || nombreProyecto == undefined ||
         tipoProyecto == '' || tipoProyecto == undefined ||
         descripcion == '' || descripcion == undefined ||
+        //propiedad == '' || lote == '' ||
         productoCosecha == '' || productoCosecha == undefined){
-            //alert('Completa todo los campos');
+            
             this.get('flashMessages').warning('Hay campos obligatorios que no se han llenado. Intentelo de nuevo', {
             timeout: 10000,
             });
         }else{
             //Validación de que el nombre del proyecto sean solo letras
             if(/^[A-Za-zÀ-ÿ\u00f1\u00d1 ]+$/.test(nombreProyecto)){
-                //Validacion de la fecha
-                //if(/^\d{4}([\-/.])(0?[1-9]|1[1-2])\1(3[01]|[12][0-9]|0?[1-9])$/.test(fechaInicio)){
-                //fin de validacion
+                
                     var usuario = this.model.Usuario;
-
-                    //console.log(this.store.findRecord('lote','-LCqAjSJeo9a_LR6taCj').get('proyectos'));
-                    //console.log(lote);
-
-                    /*
-                    nuevoProyecto.save().then(function(){
-                      return usuario.save();
-                    });
-                    */
                     this.get('store').findRecord('lote', this.get('idLote')).then((lote)=>{
                       var nuevoProyecto = this.store.createRecord('proyecto',{
                         nombre: nombreProyecto,
@@ -78,7 +72,6 @@ export default Controller.extend({
 
                     this.set('nombreProyecto', '');
                     this.set('fechaInicio', '');
-                    this.set('fechaFin', '');
                     this.set('tipoProyecto', '');
                     this.set('descripcion', '');
                     this.set('productoCosecha', '');
@@ -86,11 +79,7 @@ export default Controller.extend({
                     this.get('flashMessages').success('Proyecto agregado correctamente!', {
                     timeout: 10000,
                     });
-                /*}else{
-                    this.get('flashMessages').warning('Fecha de Inicio no valida, Fomato DD-MM-AA', {
-                        timeout: 10000,
-                      });
-                } */
+                
             }else{
                 this.get('flashMessages').warning('Nombre no valido, solo letras', {
                   timeout: 10000,

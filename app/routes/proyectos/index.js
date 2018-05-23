@@ -11,7 +11,7 @@ export default Route.extend({
         }
       });
       return proyectosActivos;
-    };
+    }
     return proyectosActivos(proyectos);
   }
 });
