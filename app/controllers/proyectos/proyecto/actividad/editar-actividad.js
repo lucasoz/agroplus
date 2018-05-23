@@ -26,7 +26,7 @@ export default Controller.extend({
           });
           alert('Actividad actualizado correctamente!');
         }else {
-          this.get('flashMessages').warning('El nombre del proyecto debe ser solo letras', {
+          this.get('flashMessages').warning('El nombre de la actividad debe ser solo letras', {
             timeout: 10000,
           });
         }

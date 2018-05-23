@@ -1,9 +1,24 @@
 {{#link-to 'contactos' class='btn btn-default'}}
   Regresar
 {{/link-to}}
+
 <h1>Detalles de contacto</h1>
-<span><strong>Nombre: </strong>{{model.nombre}}</span><br>
-<span><strong>Apellido: </strong>{{model.apellido}}</span><br>
-<span><strong>Tipo de contacto: </strong>{{model.tipoContacto}}</span><br>
-<span><strong>Telefono: </strong>{{model.telefono}}</span><br>
+<table class="table">
+  <thead>
+    <tr>
+    <th>Nombre</th>
+    <th>Apellido</th>
+    <th>Tipo de contacto:</th>
+    <th>Telefono</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <td>{{model.nombre}}</td>
+    <td>{{model.apellido}}</td>
+    <td>{{model.tipoContacto}}</td>
+    <td>{{model.telefono}}</td>
+    </tr>
+  </tbody>
+</table>
 {{outlet}}

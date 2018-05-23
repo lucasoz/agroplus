@@ -19,28 +19,19 @@ export default Controller.extend({
         const descripcion = this.get('descripcion');
         const tipoActividad = document.getElementById("tipoActividad").value;
         const contacto = this.get('contacto');
-        // console.log(nombreAcitividad,fecha,costo,descripcion,tipoActividad,this.get('contacto'));
-        //const id = this.get('idLote');
-        //console.log(lote);
-
+        
         //Verificaciones:
         //Verificación que los campos esten llenos
-        console.log(nombreActividad,tipoActividad,descripcion,costo);
         if (nombreActividad == '' || nombreActividad == undefined ||
         tipoActividad == '' || tipoActividad == undefined ||
         descripcion == '' || descripcion == undefined ||
         costo == '' || costo == undefined){
-            //alert('Completa todo los campos');
             this.get('flashMessages').warning('Hay campos obligatorios que no se han llenado. Intentelo de nuevo', {
             timeout: 10000,
             });
         }else{
             //Validación de que el nombre del proyecto sean solo letras
             if(/^[A-Za-zÀ-ÿ\u00f1\u00d1 ]+$/.test(nombreActividad)){
-                //Validacion de la fecha
-                //if(/^\d{4}([\-/.])(0?[1-9]|1[1-2])\1(3[01]|[12][0-9]|0?[1-9])$/.test(fechaInicio)){
-                //fin de validacion
-
                     const proyecto = this.get('model.proyecto');
                     var nuevaActividad = this.store.createRecord('actividad',{
                       nombre: nombreActividad,
