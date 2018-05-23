@@ -28,6 +28,8 @@ export default Controller.extend({
         const tipoProyecto = document.getElementById("tipoProyecto").value;
         const descripcion = this.get('descripcion');
         const productoCosecha = this.get('productoCosecha');
+        const idPropiedad = this.get('selectedOption');
+        const idLote = this.get('idLote');
         //const propiedad = document.getElementById('propiedadesc').value;
         //const lote = document.getElementById('loteesc').value;
 
@@ -35,20 +37,27 @@ export default Controller.extend({
         //Verificaciones:
         //Verificación que los campos esten llenos
         if (nombreProyecto == '' || nombreProyecto == undefined ||
-        tipoProyecto == '' || tipoProyecto == undefined ||
+        tipoProyecto == '' ||
         descripcion == '' || descripcion == undefined ||
         //propiedad == '' || lote == '' ||
         productoCosecha == '' || productoCosecha == undefined){
-            
             this.get('flashMessages').warning('Hay campos obligatorios que no se han llenado. Intentelo de nuevo', {
             timeout: 10000,
             });
+        }else if (idPropiedad == undefined) {
+          this.get('flashMessages').warning('Selecione una propiedad. Intentelo de nuevo', {
+          timeout: 10000,
+          });
+        }else if (idLote == undefined) {
+          this.get('flashMessages').warning('Selecione un lote. Intentelo de nuevo', {
+          timeout: 10000,
+          });
         }else{
             //Validación de que el nombre del proyecto sean solo letras
             if(/^[A-Za-zÀ-ÿ\u00f1\u00d1 ]+$/.test(nombreProyecto)){
-                
+
                     var usuario = this.model.Usuario;
-                    this.get('store').findRecord('lote', this.get('idLote')).then((lote)=>{
+                    this.get('store').findRecord('lote', idLote).then((lote)=>{
                       var nuevoProyecto = this.store.createRecord('proyecto',{
                         nombre: nombreProyecto,
                         fechaInicio: fechaInicio,
@@ -79,7 +88,7 @@ export default Controller.extend({
                     this.get('flashMessages').success('Proyecto agregado correctamente!', {
                     timeout: 10000,
                     });
-                
+
             }else{
                 this.get('flashMessages').warning('Nombre no valido, solo letras', {
                   timeout: 10000,
