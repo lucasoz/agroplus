@@ -10,7 +10,7 @@ export default Route.extend({
           proyectosFinalizados.push(proyecto);
         }
       });
-      return proyectosFinalizados
+      return proyectosFinalizados;
     }
     return proyectosFinalizados(proyectos);
   }

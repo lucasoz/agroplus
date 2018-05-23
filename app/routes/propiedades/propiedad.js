@@ -8,8 +8,14 @@ export default Route.extend({
     }else{
       Usuario = this.modelFor('application');
     }
-    const self = this;
+    //const self = this;
     let propiedadUsuario = Usuario.get('propiedades').findBy('id', id);
+    if (propiedadUsuario == undefined) {
+      this.transitionTo('index');
+    }else {
+      return propiedadUsuario;
+    }
+    /*
     let propiedad = this.store.findRecord('propiedad',id).then((propiedadRes)=>{
       if(propiedadRes == propiedadUsuario){
         return propiedadRes;
@@ -19,7 +25,8 @@ export default Route.extend({
     }).catch(()=>{
       self.transitionTo('index');
     });
-    return propiedad;
+    */
+    //return propiedad;
 
   }
 });
