@@ -6,8 +6,10 @@
           {{/link-to}}
         </div>
         <div class="navbar-form navbar-right">
-          
-          <a {{action 'cerrarSesion'}} class='btn btn-danger'>Cerrar Sesión</a>
+          {{#if authenticate}}
+            <a {{action 'cerrarSesion'}} class='btn btn-danger'>Cerrar Sesión</a>
+          {{/if}}
+
         </div>
     </div>
 </nav>
