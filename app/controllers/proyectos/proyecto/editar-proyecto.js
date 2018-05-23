@@ -4,11 +4,11 @@ export default Controller.extend({
     actions:{
         editarProyecto(){
          // definicion de las variables
-        const proyecto = this.get('model');
-        const nombre = this.get('nombre');
+        const proyecto = this.get('model').proyecto;
+        const nombre = this.get('nombreProyecto');
         const tipoProyecto = document.getElementById("tipoProyecto").value;
         const descripcion = this.get('descripcion');
-            
+
         //Verificaciones:
         //Verificación que los campos esten llenos
 
@@ -18,11 +18,12 @@ export default Controller.extend({
             this.get('flashMessages').warning('Hay campos obligatorios que no se han llenado. Intentelo de nuevo', {
             timeout: 10000,
             });
-           
+
         }else{
             //Validación de que el nombre del proyecto sean solo letras
             if(/^[A-Za-zÀ-ÿ\u00f1\u00d1 ]+$/.test(nombre)){
-                
+              console.log(proyecto);
+
                    proyecto.set('nombre', nombre);
                    proyecto.set('tipoProyecto',tipoProyecto);
                    proyecto.set('descripcion',descripcion);
@@ -35,7 +36,7 @@ export default Controller.extend({
                     this.set('nombre', '');
                     this.set('tipoProyecto', '');
                     this.set('descripcion', '');
-                    
+
             }else{
                 this.get('flashMessages').warning('Nombre no valido, solo letras', {
                   timeout: 10000,
@@ -44,5 +45,5 @@ export default Controller.extend({
             }
          }
        }
-    
+
 });
