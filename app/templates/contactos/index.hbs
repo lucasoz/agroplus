@@ -18,13 +18,19 @@
   <thead>
     <tr>
     <th>Nombre</th>
+    <th>Apellido</th>
+    <th>Tipo de contacto</th>
+    <th>Teléfono</th>
     <th>Opciones</th>
     </tr>
   </thead>
   <tbody>
     {{#each model as |contacto|}}
       <tr>
-        <td>{{#link-to 'contactos.contacto' contacto.id}} {{contacto.nombre}} {{/link-to}}</td>
+        <td>{{contacto.nombre}}</td>
+        <td>{{contacto.apellido}}</td>
+        <td>{{contacto.tipoContacto}}</td>
+        <td>{{contacto.telefono}}</td>
         <td>
           {{#link-to 'contactos.contacto.editar-contacto' contacto.id class='btn btn-primary'}}Editar{{/link-to}}
           <button type="button" name="button" {{action 'eliminarContacto' contacto}} class='btn btn-danger'>Eliminar</button>
