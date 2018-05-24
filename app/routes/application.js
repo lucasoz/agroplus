@@ -32,15 +32,12 @@ export default Route.extend({
       }
     });
   },
-  setupController(controller, model){
+  setupController(controller){
     this._super(...arguments);
     this.get('firebaseApp').auth().onAuthStateChanged((user)=>{
-      console.log(user);
       if (user) {
         controller.set('authenticate', true);
-        console.log(this.get('authenticate'));
       } else {
-        console.log('jooo');
         controller.set('authenticate', false);
       }
     });

@@ -46,7 +46,7 @@ export default Controller.extend({
                     let nuevoContacto = this.get('store').createRecord('contacto',{
                       nombre: nombre,
                       apellido: apellido,
-                      tipoContacto: 'Popietario',
+                      tipoContacto: 'Propietario',
                       telefono: telefono,
                     });
 

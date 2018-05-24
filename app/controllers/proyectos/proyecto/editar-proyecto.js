@@ -22,7 +22,6 @@ export default Controller.extend({
         }else{
             //Validación de que el nombre del proyecto sean solo letras
             if(/^[A-Za-zÀ-ÿ\u00f1\u00d1 ]+$/.test(nombre)){
-              console.log(proyecto);
 
                    proyecto.set('nombre', nombre);
                    proyecto.set('tipoProyecto',tipoProyecto);

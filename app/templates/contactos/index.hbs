@@ -1,6 +1,6 @@
 {{#each flashMessages.queue as |flash|}}
   {{#flash-message flash=flash as |component flash|}}
-  
+
     {{flash.message}}
   {{/flash-message}}
 {{/each}}
@@ -31,10 +31,14 @@
         <td>{{contacto.apellido}}</td>
         <td>{{contacto.tipoContacto}}</td>
         <td>{{contacto.telefono}}</td>
-        <td>
-          {{#link-to 'contactos.contacto.editar-contacto' contacto.id class='btn btn-primary'}}Editar{{/link-to}}
-          <button type="button" name="button" {{action 'eliminarContacto' contacto}} class='btn btn-danger'>Eliminar</button>
-        </td>
+        {{#if (eq contacto.tipoContacto 'Propietario')}}
+
+        {{else}}
+          <td>
+            {{#link-to 'contactos.contacto.editar-contacto' contacto.id class='btn btn-primary'}}Editar{{/link-to}}
+            <button type="button" name="button" {{action 'eliminarContacto' contacto}} class='btn btn-danger'>Eliminar</button>
+          </td>
+        {{/if}}
       </tr>
     {{/each}}
   </tbody>
